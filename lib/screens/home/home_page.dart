@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/maps_widget.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_daily_cards.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_food_cards.dart';

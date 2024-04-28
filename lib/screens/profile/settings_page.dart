@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class SettingPage extends StatelessWidget {
   @override

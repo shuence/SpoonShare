@@ -9,7 +9,6 @@ import 'package:location/location.dart' as location;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:spoonshare/screens/admin/all_ngos.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class MapsWidget extends StatefulWidget {
   @override

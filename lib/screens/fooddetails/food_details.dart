@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 

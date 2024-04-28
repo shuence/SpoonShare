@@ -7,7 +7,6 @@ import 'package:spoonshare/screens/ngo/ngo_information.dart';
 import 'package:spoonshare/screens/ngo/verify_donated_food.dart';
 import 'package:spoonshare/screens/ngo/verify_shared_food.dart';
 import 'package:spoonshare/screens/ngo/volunteer_management.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
 class NGOHomeScreen extends StatefulWidget {

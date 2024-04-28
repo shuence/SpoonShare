@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/home/MainPage.dart';
-import 'package:spoonshare/screens/home/home_page.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/onboarding.dart';
 import 'package:permission_handler/permission_handler.dart';

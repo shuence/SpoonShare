@@ -12,7 +12,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/ngo/ngo_home.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
