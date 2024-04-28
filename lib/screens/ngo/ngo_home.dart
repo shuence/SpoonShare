@@ -118,7 +118,7 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
                       ),
                     ),
                     Text(
-                      role ?? '',
+                      role ?? 'NGO',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         fontSize: 16,
@@ -242,7 +242,7 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
                       ),
                     ),
                     Text(
-                      role ?? '',
+                      role ?? 'NGO',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         fontSize: 16,

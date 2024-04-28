@@ -1,6 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/admin/ngo_management.dart';
 import 'package:spoonshare/screens/admin/verify_donated_food.dart';
@@ -24,9 +23,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   String? organization;
   bool isLoading = true;
 
-  // UserProfile instance
-  final UserProfile _userProfile = UserProfile();
-
   @override
   void initState() {
     super.initState();
@@ -35,31 +31,40 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 
   Future<void> fetchUserProfile() async {
     try {
-      await _userProfile.loadUserProfile();
-      role = _userProfile.getRole();
-      fullName = _userProfile.getFullName();
-      email = _userProfile.getEmail();
-      contactNumber = _userProfile.getContactNumber();
-      organization = _userProfile.getOrganisation();
+      final userProfile = UserProfile(); // Initialize here
+      await userProfile.loadUserProfile();
+      role = userProfile.getRole();
+      fullName = userProfile.getFullName();
+      email = userProfile.getEmail();
+      contactNumber = userProfile.getContactNumber();
+      organization = userProfile.getOrganisation();
     } catch (e) {
-      showErrorSnackbar(context, 'Error fetching user profile: $e');
+      if (mounted) {
+        showErrorSnackbar(context, 'Error fetching user profile: $e');
+      }
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildVerifiedContent(),
-      
     );
   }
 
   Widget _buildVerifiedContent() {
-    return Center(
+    return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -96,20 +101,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 42,
-                      height: 42,
-                      decoration: ShapeDecoration(
-                        color: Colors.black.withOpacity(0.08),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () {},
-                      ),
-                    ),
                     const SizedBox(width: 8),
                     Container(
                       width: 42,
@@ -221,8 +212,8 @@ Widget _buildCard({
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     fontFamily: 'DM Sans',
                     fontWeight: FontWeight.bold,
                   ),
@@ -233,8 +224,8 @@ Widget _buildCard({
             const SizedBox(height: 8),
             Text(
               description,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontFamily: 'DM Sans',
               ),
             ),

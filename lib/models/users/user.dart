@@ -92,4 +92,6 @@ class UserProfile {
   String getOrganisation() {
     return organisation;
   }
+
+  void cancelStreams() {}
 }

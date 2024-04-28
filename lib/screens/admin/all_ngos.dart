@@ -32,7 +32,7 @@ class _AllNGOScreenState extends State<AllNGOScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All NGO\s'),
+        title: const Text('All NGOs'),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,

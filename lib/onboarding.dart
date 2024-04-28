@@ -14,6 +14,9 @@ class Onboarding extends StatelessWidget {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top,
+          ),
           color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:spoonshare/constants/app_colors.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
 
 class NearbyDailyFoodCard extends StatelessWidget {
@@ -52,116 +54,117 @@ class NearbyDailyFoodCard extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
 
-        return Card(
-          margin: const EdgeInsets.all(8),
-          elevation: 8,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(data['imageUrl'] ?? ''),
-                    fit: BoxFit.cover,
+        return Padding(
+          padding: EdgeInsets.only(bottom: 24.h),
+          child: GestureDetector(
+            onTap: () => _navigateToFoodDetails(context, data),
+            child: Container(
+              width: 312.w,
+              height: 220.h,
+              decoration: BoxDecoration(
+                color: AppColors.basePrimaryColor,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 5,
+                    color: AppColors.kBlackColor.withOpacity(0.4),
                   ),
+                ],
+                image: DecorationImage(
+                  image: NetworkImage(data['imageUrl'] ?? ''),
+                  fit: BoxFit.cover,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 10.0,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(Icons.location_on, size: 16),
-                        const SizedBox(width: 4),
-                          Flexible(
-                          child: Text(
-                            data['venue'],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w700,
-                            ),
-                            textAlign: TextAlign.center,
+                        Container(
+                          width: 219.0,
+                          decoration: BoxDecoration(
+                            color: AppColors.kWhiteColor.withOpacity(0.6),
+                            borderRadius: BorderRadius.circular(32.0),
+                            border: Border.all(color: AppColors.kWhiteColor),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0,
+                            vertical: 7.0,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Icon(Icons.location_on_outlined),
+                              const SizedBox(width: 4.0),
+                              Expanded(
+                                child: Text(
+                                  _truncateText(data['venue'], 20),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(width: 8),
-                        if (isNGOVerified)
-                          const Icon(Icons.verified,
-                              color: Colors.green, size: 16),
-                        if (!isNGOVerified)
-                          const Icon(Icons.cancel, color: Colors.red, size: 16),
+                        const Spacer(),
+                        Column(
+                          children: [
+                            _circularButton(
+                              icon: Icons.favorite_border_outlined,
+                              onTap: () {},
+                            ),
+                            const SizedBox(height: 12.0),
+                            _circularButton(
+                              icon: Icons.share_rounded,
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      data['address'],
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: "DM Sans",
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 8.0,
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(16.0, 18.0, 16.0, 11.0),
+                      decoration: BoxDecoration(
+                        color: AppColors.kWhiteColor,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _customText(
+                            headerText: 'UPLOADED BY:',
+                            text: '${data['fullName']}',
+                          ),
+                          _customVerticalDivider(),
+                          _customText(
+                            headerText: 'FOOD TYPE:',
+                            text: '${data['foodType']}',
+                          ),
+                          _customVerticalDivider(),
+                          _customText(
+                            headerText: 'UPLOAD TIME:',
+                            text: '$uploadTime',
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const Divider(height: 0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Uploaded By: ${data['fullName']}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'Food Type: ${data['foodType']}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(height: 0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Uploaded: $uploadTime',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'Daily: ${data['dailyActive']}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         );
       },
@@ -245,3 +248,58 @@ class NearbyDailyFoodCard extends StatelessWidget {
     );
   }
 }
+
+
+// Helper function to truncate text
+  String _truncateText(String text, int maxLength) {
+    return (text.length > maxLength) ? '${text.substring(0, maxLength)}...' : text;
+  }
+
+  // Helper function to build circular buttons
+  Widget _circularButton({required IconData icon, required Function() onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: CircleAvatar(
+        radius: 20,
+        backgroundColor: AppColors.kWhiteColor.withOpacity(0.6),
+        child: Icon(
+          icon,
+          color: AppColors.kBlackColor,
+        ),
+      ),
+    );
+  }
+
+  // Helper function to build custom text widgets
+  Widget _customText({required String headerText, required String text}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          headerText,
+          style: TextStyle(
+            fontSize: 10.sp,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 4.0),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: AppColors.kBlackColor,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Helper function to build custom vertical divider
+  Widget _customVerticalDivider() {
+    return Container(
+      height: 20.0,
+      width: 1.0,
+      color: Colors.grey,
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+    );
+  }

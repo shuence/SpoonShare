@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/controllers/auth/signin_controller.dart';
 import 'package:spoonshare/screens/auth/forgot_password.dart';
 import 'package:spoonshare/screens/auth/signup.dart';
@@ -18,7 +19,6 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
-  
 
   @override
   void dispose() {
@@ -34,7 +34,10 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height + 10.h,
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+            ),
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
@@ -54,7 +57,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               padding: const EdgeInsets.only(
                                 top: 4,
                               ),
-                              decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
+                              decoration:
+                                  const BoxDecoration(color: Color(0xFFFF9F1C)),
                               child: const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -118,7 +122,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   'Explore nearby food or join us to make a difference!',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Colors.black.withOpacity(0.800000011920929),
+                                    color: Colors.black
+                                        .withOpacity(0.800000011920929),
                                     fontSize: 14,
                                     fontFamily: 'DM Sans',
                                     fontWeight: FontWeight.w500,
@@ -154,7 +159,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   height: 18,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage("assets/images/google.png"),
+                                      image: AssetImage(
+                                          "assets/images/google.png"),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -185,7 +191,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
                                 child: Text(
                                   'OR',
                                   style: TextStyle(
@@ -209,7 +216,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(height: 16),
-                            InputField(label: 'Email', controller: _emailController),
+                            InputField(
+                                label: 'Email', controller: _emailController),
                             const SizedBox(height: 16),
                             InputField(
                               label: 'Password',
@@ -229,13 +237,15 @@ class _SignInScreenState extends State<SignInScreen> {
                               onTap: () {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => ForgotPasswordScreen()),
+                                      builder: (context) =>
+                                          ForgotPasswordScreen()),
                                 );
                               },
                               child: const Align(
                                 alignment: Alignment.bottomRight,
                                 child: Padding(
-                                  padding: EdgeInsets.only(top: 8.0, right: 36.0),
+                                  padding:
+                                      EdgeInsets.only(top: 8.0, right: 36.0),
                                   child: Text(
                                     'forgot password?',
                                     style: TextStyle(
@@ -324,8 +334,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   TextSpan(
                                     text: 'Don\'t have an account?',
                                     style: TextStyle(
-                                      color:
-                                          Colors.black.withOpacity(0.699999988079071),
+                                      color: Colors.black
+                                          .withOpacity(0.699999988079071),
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w500,
@@ -372,10 +382,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 context: context,
                               );
                               // Hide loading indicator
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const HomeScreen()),
+                                ModalRoute.withName('/'),
                               );
                             } catch (e) {
                               // Handle any exceptions during signup
@@ -393,7 +404,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                           child: const SizedBox(
-                            width: 312,
+                            width: 250,
                             height: 45,
                             child: Center(
                               child: Text(

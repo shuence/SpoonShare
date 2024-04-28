@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 void showSuccessSnackbar(BuildContext context, String message) {
   final snackBar = SnackBar(
     content: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Text(
         message,
         style: const TextStyle(
