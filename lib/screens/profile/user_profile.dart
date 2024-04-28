@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_form.dart';
 import 'package:spoonshare/services/auth.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
@@ -420,7 +419,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

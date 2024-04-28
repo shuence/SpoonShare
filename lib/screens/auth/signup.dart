@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/controllers/auth/signup_controller.dart';
 import 'package:spoonshare/screens/auth/signin.dart';
 import 'package:spoonshare/screens/home/home.dart';
@@ -41,15 +42,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height + 40,
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
+            width: ScreenUtil().screenWidth,
+            height: 860.h,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
@@ -58,31 +58,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Column(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 146,
+                      width: ScreenUtil().screenWidth,
+                      height: ScreenUtil().setHeight(120),
                       padding: const EdgeInsets.only(
                         top: 4,
                       ),
                       decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'SpoonShare',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 28,
+                              fontSize: 28.sp,
                               fontFamily: 'Lora',
                               fontWeight: FontWeight.w700,
                               letterSpacing: 1.12,
                             ),
                           ),
-                          SizedBox(height: 3),
+                          const SizedBox(height: 3),
                           Text(
                             'Nourishing Lives, Creating Smiles!',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontFamily: 'DM Sans',
                               fontWeight: FontWeight.w500,
                             ),
@@ -92,34 +92,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 SizedBox(
-                  width: 275,
-                  height: 69,
+                  width: 280.w,
+                  height: 75.h,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Join the movement!',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 24,
+                          fontSize: 24.sp,
                           fontFamily: 'Lora',
                           fontWeight: FontWeight.w700,
                           height: 0,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2.h),
                       SizedBox(
-                        width: 275,
+                        width: 275.w,
                         child: Text(
                           'Explore nearby food or join us to make a difference!',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.black.withOpacity(0.800000011920929),
-                            fontSize: 14,
+                            color: Colors.black.withOpacity(0.8),
+                            fontSize: 14.sp,
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.w500,
                             height: 0,
@@ -129,16 +129,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Container(
-                  width: 218,
-                  height: 38,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                  width: ScreenUtil().setWidth(218),
+                  height: ScreenUtil().setHeight(38),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 18.w,
+                      vertical: 10.h),
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius:
+                          BorderRadius.circular(ScreenUtil().setWidth(50)),
                     ),
                   ),
                   child: InkWell(
@@ -151,8 +153,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: 18,
-                          height: 18,
+                          width: ScreenUtil().setWidth(18),
+                          height: ScreenUtil().setHeight(18),
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage("assets/images/google.png"),
@@ -160,12 +162,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 10),
-                        const Text(
+                        SizedBox(width: ScreenUtil().setWidth(10)),
+                        Text(
                           'CONTINUE WITH GOOGLE',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.w700,
                             height: 0,
@@ -175,9 +177,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: ScreenUtil().setHeight(16)),
                 Container(
-                  width: 296,
+                  width: ScreenUtil().setWidth(296),
                   child: Row(
                     children: <Widget>[
                       Expanded(
@@ -186,12 +188,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: ScreenUtil().setWidth(8)),
                         child: Text(
                           'OR',
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.4),
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.w700,
                           ),
@@ -205,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: ScreenUtil().setHeight(20)),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -213,13 +216,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       label: 'Full Name',
                       controller: _fullNameController,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(label: 'Email', controller: _emailController),
-                    const SizedBox(height: 16),
+                    SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
                         label: 'Contact Number',
                         controller: _contactNumberController),
-                    const SizedBox(height: 16),
+                    SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
                       label: 'Password',
                       isPassword: true,
@@ -229,7 +232,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _togglePasswordVisibility();
                       },
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
                       label: 'Confirm Password',
                       isPassword: true,
@@ -242,10 +245,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.only(top: 10), // Add margin to the top
+                  margin: EdgeInsets.only(top: ScreenUtil().setHeight(10)),
                   child: SizedBox(
-                    width: 296,
+                    width: ScreenUtil().setWidth(296),
                     child: Text.rich(
                       TextSpan(
                         children: [
@@ -254,17 +256,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 'By signing up, you confirm that you have read and agreed to SpoopShare’s ',
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
-                              fontSize: 11,
+                              fontSize: 11.sp,
                               fontFamily: 'DM Sans',
                               fontWeight: FontWeight.w400,
                               height: 0,
                             ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'Privacy Policy',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 11,
+                              fontSize: 11.sp,
                               fontFamily: 'DM Sans',
                               fontWeight: FontWeight.w400,
                               decoration: TextDecoration.underline,
@@ -275,17 +277,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             text: ' & ',
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
-                              fontSize: 11,
+                              fontSize: 11.sp,
                               fontFamily: 'DM Sans',
                               fontWeight: FontWeight.w400,
                               height: 0,
                             ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'Terms',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 11,
+                              fontSize: 11.sp,
                               fontFamily: 'DM Sans',
                               fontWeight: FontWeight.w400,
                               decoration: TextDecoration.underline,
@@ -299,15 +301,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(
-                      top: 20.0), // Adjust the top margin as needed
+                  margin: EdgeInsets.only(top: ScreenUtil().setHeight(20)),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const SignInScreen()), // Replace LoginScreen with the actual screen you want to navigate to
+                            builder: (context) => const SignInScreen()),
                       );
                     },
                     child: Text.rich(
@@ -316,29 +316,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           TextSpan(
                             text: 'Already have an account?',
                             style: TextStyle(
-                              color:
-                                  Colors.black.withOpacity(0.699999988079071),
-                              fontSize: 16,
+                              color: Colors.black.withOpacity(0.7),
+                              fontSize: 16.sp,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w500,
                               height: 0,
                             ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: ' ',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w500,
                               height: 0,
                             ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'Log in',
                             style: TextStyle(
-                              color: Color(0xFFFF9F1C),
-                              fontSize: 16,
+                              color: const Color(0xFFFF9F1C),
+                              fontSize: 16.sp,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w700,
                               decoration: TextDecoration.underline,
@@ -350,14 +349,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: ScreenUtil().setHeight(10)),
                 ElevatedButton(
                   onPressed: () async {
-                    // Show loading indicator
                     showLoadingDialog(context);
 
                     try {
-                      // Perform signup asynchronously
                       await _signUpController.signUp(
                         fullName: _fullNameController.text,
                         email: _emailController.text,
@@ -367,8 +364,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         context: context,
                       );
 
-                      // Hide loading indicator
-                      Navigator.of(context).pop(); // Pop the loading dialog
+                      Navigator.of(context).pop();
 
                       Navigator.push(
                         context,
@@ -376,13 +372,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             builder: (context) => const HomeScreen()),
                       );
                     } catch (e) {
-                      // Handle any exceptions during signup
                       print("Signup failed: $e");
 
-                      // Hide loading indicator
-                      Navigator.of(context).pop(); // Pop the loading dialog
+                      Navigator.of(context).pop();
 
-                      // You can customize this part based on your requirements
                       showErrorSnackbar(
                           context, 'Signup failed. Please try again.');
                     }
@@ -390,18 +383,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF9F1C),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius:
+                          BorderRadius.circular(ScreenUtil().setWidth(50)),
                     ),
                   ),
-                  child: const SizedBox(
-                    width: 312,
-                    height: 45,
+                  child: SizedBox(
+                    width: 300.h,
+                    height: 45.h,
                     child: Center(
                       child: Text(
                         'Create Account',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: 'Roboto',
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.36,

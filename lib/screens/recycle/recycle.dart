@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spoonshare/screens/recycle/pickup_food.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class RecycleScreen extends StatelessWidget {
   const RecycleScreen({Key? key});
@@ -201,7 +200,7 @@ class RecycleScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

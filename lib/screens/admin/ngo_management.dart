@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:spoonshare/screens/admin/all_ngos.dart';
 import 'package:spoonshare/screens/admin/verify_ngo.dart';
 import 'package:spoonshare/screens/ngo/ngo_form.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class NGOManageScreen extends StatelessWidget {
   const NGOManageScreen({Key? key});
@@ -43,7 +42,7 @@ class NGOManageScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

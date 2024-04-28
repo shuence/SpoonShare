@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/auth/signin.dart';
 import 'package:spoonshare/screens/auth/signup.dart';
 
@@ -8,22 +9,20 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
+       child: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
-          ),
           color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 146,
+                height: 146.h,
                 decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -50,13 +49,8 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 310,
-                height: 290,
-                padding: const EdgeInsets.only(
-                  left: 32,
-                  right: 32,
-                  top: 42,
-                ),
+                width: 310.w,
+                height: 220.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/onboarding.png"),
@@ -64,7 +58,7 @@ class Onboarding extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 14),
               const Text(
                 'Be the Spoon in someone\'s road,',
                 textAlign: TextAlign.center,
@@ -85,7 +79,7 @@ class Onboarding extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 50),
+                const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -149,10 +143,9 @@ class Onboarding extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 50),
                    Container(
                   margin:
-                      const EdgeInsets.only(top: 10), // Add margin to the top
+                      const EdgeInsets.only(top: 10),
                   child: SizedBox(
                     width: 296,
                     child: Text.rich(
@@ -211,6 +204,7 @@ class Onboarding extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

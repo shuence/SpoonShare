@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/maps_widget.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_daily_cards.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_food_cards.dart';
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding: const EdgeInsets.only(left: 20, right: 20,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,6 +37,7 @@ class _HomePageState extends State<HomePage> {
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'Lora',
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

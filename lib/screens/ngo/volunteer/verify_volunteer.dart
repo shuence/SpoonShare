@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:spoonshare/screens/ngo/volunteer_management.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
 class verifyVolunteer extends StatefulWidget {
@@ -109,7 +108,7 @@ class _verifyVolunteerState extends State<verifyVolunteer> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
@@ -279,7 +278,7 @@ class volunteerDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

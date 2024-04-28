@@ -23,7 +23,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   device_info_plus: ^9.1.1
   url_launcher: ^6.2.3
-  intl: ^0.19.0
+  intl: ^0.18.1
   google_maps_flutter: ^2.5.3
   location: ^5.0.3
   google_maps_webservice: ^0.0.20-nullsafety.5
@@ -32,6 +32,10 @@ dependencies:
   geocoding: ^2.1.1
   custom_info_window: ^1.0.1
   geolocator: ^11.0.0
+  change_app_package_name: ^1.1.0
+  flutter_screenutil: ^5.9.0
+  device_preview: 1.1.0
+
 
 dev_dependencies:
   flutter_test:

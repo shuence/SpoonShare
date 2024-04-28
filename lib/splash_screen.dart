@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/home/home.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,65 +25,51 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.symmetric(horizontal: 77),
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 130,
-                          height: 130,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/spoonshare.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'SpoonShare',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontFamily: 'Lora',
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.96,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        const Text(
-                          'Nourishing Lives, Creating Smiles!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 13,
-                            fontFamily: 'DMSans',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
+        child: Container(
+          width: ScreenUtil().screenWidth,
+          height: ScreenUtil().screenHeight,
+          padding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setWidth(77)),
+          clipBehavior: Clip.antiAlias,
+          decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: ScreenUtil().setWidth(130),
+                height: ScreenUtil().setWidth(130),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/spoonshare.png"),
+                    fit: BoxFit.cover,
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                  height: ScreenUtil().setHeight(10)), 
+              Text(
+                'SpoonShare',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize:24.sp,
+                  fontFamily: 'Lora',
+                  fontWeight: FontWeight.w700,
+                  letterSpacing:
+                      ScreenUtil().setWidth(0.96),
+                ),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(5)),
+              Text(
+                'Nourishing Lives, Creating Smiles!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: ScreenUtil().setSp(12),
+                  fontFamily: 'DMSans',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
