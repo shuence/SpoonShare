@@ -234,23 +234,6 @@ class ngoDetailsPage extends StatelessWidget {
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        onPressed: () => _deletengo(ngoDoc, context),
-                        child: const Text('Remove NGO'),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
