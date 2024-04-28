@@ -7,7 +7,6 @@ import 'package:spoonshare/screens/admin/verify_donated_food.dart';
 import 'package:spoonshare/screens/admin/verify_recycle_food.dart';
 import 'package:spoonshare/screens/admin/verify_shared_food.dart';
 import 'package:spoonshare/screens/profile/user_profile.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
 class AdminHomeScreen extends StatefulWidget {
@@ -55,7 +54,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildVerifiedContent(),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

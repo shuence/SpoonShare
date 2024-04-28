@@ -5,12 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
@@ -101,7 +101,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
 
     return SingleChildScrollView(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height,
+        height: 810.h,
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -712,7 +712,7 @@ class ShareFoodScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

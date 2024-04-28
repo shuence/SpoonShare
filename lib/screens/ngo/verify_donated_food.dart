@@ -168,7 +168,7 @@ class _VerifyDonatedFoodState extends State<VerifyDonatedFood> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
@@ -366,7 +366,7 @@ class FoodDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

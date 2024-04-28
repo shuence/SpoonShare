@@ -221,7 +221,7 @@ class FoodDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:spoonshare/screens/admin/ngo_management.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
 class verifyNGO extends StatefulWidget {
@@ -109,7 +108,7 @@ class _verifyNGOState extends State<verifyNGO> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
@@ -268,7 +267,7 @@ class ngoDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

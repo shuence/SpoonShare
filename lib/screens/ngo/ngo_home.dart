@@ -92,7 +92,7 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
                   child: _buildVerifiedContent(),
                 )
               : _buildUnverifiedContent(),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

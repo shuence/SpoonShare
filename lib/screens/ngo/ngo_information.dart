@@ -244,7 +244,7 @@ class NGOProfileScreenState extends State<NGOProfileScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

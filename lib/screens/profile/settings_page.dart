@@ -76,7 +76,7 @@ class SettingPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spoonshare/screens/ngo/ngo_form.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_form.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -17,6 +16,23 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Join Us'),
+        backgroundColor: const Color(0xFFFF9F1C),
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontFamily: 'DM Sans',
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -29,43 +45,6 @@ class _DashboardPageState extends State<DashboardPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 146,
-                    padding: const EdgeInsets.only(
-                      top: 4,
-                    ),
-                    decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'SpoonShare',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontFamily: 'Lora',
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1.12,
-                          ),
-                        ),
-                        SizedBox(height: 3),
-                        Text(
-                          'Nourishing Lives, Creating Smiles!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 32),
               SizedBox(
                 width: 300,
@@ -120,7 +99,8 @@ class _DashboardPageState extends State<DashboardPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const VolunteerFormScreen(),
+                                builder: (context) =>
+                                    const VolunteerFormScreen(),
                               ),
                             );
                           },
@@ -212,7 +192,6 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

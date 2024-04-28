@@ -166,7 +166,7 @@ class _VerifySharedFoodState extends State<VerifySharedFood> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
@@ -371,7 +371,7 @@ class FoodDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/donate/donate_food.dart';
 import 'package:spoonshare/screens/donate/share_food.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class DonatePage extends StatefulWidget {
   const DonatePage({Key? key}) : super(key: key);
@@ -20,10 +20,7 @@ class _DonatePageState extends State<DonatePage> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 80,
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
-          ),
+          height: MediaQuery.of(context).size.height,
           clipBehavior: Clip.antiAlias,
           decoration: const BoxDecoration(color: Colors.white),
           child: Column(
@@ -33,10 +30,7 @@ class _DonatePageState extends State<DonatePage> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 146,
-                    padding: const EdgeInsets.only(
-                      top: 4,
-                    ),
+                    height: 146.h,
                     decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +39,7 @@ class _DonatePageState extends State<DonatePage> {
                           'SpoonShare',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 28,
+                            fontSize: 26,
                             fontFamily: 'Lora',
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1.12,
@@ -66,7 +60,7 @@ class _DonatePageState extends State<DonatePage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
               SizedBox(
                 width: 275,
                 height: 69,
@@ -104,7 +98,7 @@ class _DonatePageState extends State<DonatePage> {
                 ),
               ),
               const SizedBox(
-                height: 32,
+                height: 16,
               ),
               SizedBox(
                 width: 275,
@@ -114,14 +108,13 @@ class _DonatePageState extends State<DonatePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Share Food
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const ShareFoodScreen(), // Replace ShareFoodPage() with the actual class for your Share Food content page
+                                    const ShareFoodScreen(),
                               ),
                             );
                           },
@@ -154,15 +147,14 @@ class _DonatePageState extends State<DonatePage> {
                           ),
                         ),
                         const SizedBox(width: 27),
-                        // Donate Food
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const DonateFoodScreen(), // Replace DonateFoodPage() with the actual class for your Donate Food content page
-                              ),
+                                    const DonateFoodScreen(), 
+                                ),
                             );
                           },
                           child: Column(
@@ -198,12 +190,10 @@ class _DonatePageState extends State<DonatePage> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 24,
-              ),
-              Container(
-                width: 320,
-                height: 300,
+             SizedBox(height: 250,
+              child: Container(
+                width: 320.w,
+                height: 300.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/girlthinking.png"),
@@ -211,11 +201,11 @@ class _DonatePageState extends State<DonatePage> {
                   ),
                 ),
               )
+             ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

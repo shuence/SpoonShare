@@ -35,9 +35,6 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
@@ -361,7 +358,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () async {
                             // Show loading indicator

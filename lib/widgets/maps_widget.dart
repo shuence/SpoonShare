@@ -73,7 +73,6 @@ class _MapsWidgetState extends State<MapsWidget> {
         await getBytesFromAsset('assets/images/marker_icon.png', 100);
     customMarkerIcon = BitmapDescriptor.fromBytes(markerIcon);
 
-    // Load a different marker for NGOs
     Uint8List ngoMarkerIcon =
         await getBytesFromAsset('assets/images/ngo.png', 100);
     customNgoMarkerIcon = BitmapDescriptor.fromBytes(ngoMarkerIcon);
@@ -111,6 +110,7 @@ class _MapsWidgetState extends State<MapsWidget> {
             position: LatLng(lat, lng),
             infoWindow: infoWindow,
             icon: customMarkerIcon,
+
           );
 
           markers.add(marker);
@@ -226,7 +226,7 @@ class _MapsWidgetState extends State<MapsWidget> {
               child: Column(
                 children: [
                   const SizedBox(height: 8),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width - 16,
                     height: MediaQuery.of(context).size.height - 170,
                     child: FutureBuilder<List<Marker>>(
@@ -263,7 +263,6 @@ class _MapsWidgetState extends State<MapsWidget> {
           : const Center(
               child: CircularProgressIndicator(),
             ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

@@ -319,7 +319,7 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

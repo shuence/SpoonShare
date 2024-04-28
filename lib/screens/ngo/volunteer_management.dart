@@ -43,7 +43,7 @@ class VolunteerManageScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 

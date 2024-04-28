@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding: const EdgeInsets.only(left: 20, right: 20,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'Lora',
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -253,7 +254,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

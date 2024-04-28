@@ -3,7 +3,6 @@ import 'package:spoonshare/screens/admin/admin_home.dart';
 import 'package:spoonshare/screens/dashboard/dashboard_page.dart';
 import 'package:spoonshare/screens/ngo/ngo_home.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_home.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 
 class DashboardHomePage extends StatelessWidget {
   final String role;
@@ -37,7 +36,7 @@ class DashboardHomePage extends StatelessWidget {
         );
         break;
       default:
-       Navigator.pushReplacement(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const DashboardPage(),
@@ -49,7 +48,7 @@ class DashboardHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       navigateToRoleScreen(context);
     });
 
@@ -77,7 +76,6 @@ class DashboardHomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

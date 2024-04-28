@@ -109,7 +109,7 @@ class _verifyVolunteerState extends State<verifyVolunteer> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
@@ -279,7 +279,7 @@ class volunteerDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
