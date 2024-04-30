@@ -109,7 +109,6 @@ class _MapsWidgetState extends State<MapsWidget> {
             position: LatLng(lat, lng),
             infoWindow: infoWindow,
             icon: customMarkerIcon,
-
           );
 
           markers.add(marker);

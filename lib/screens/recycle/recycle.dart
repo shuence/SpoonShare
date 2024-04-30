@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/recycle/pickup_food.dart';
 
 class RecycleScreen extends StatelessWidget {
@@ -7,13 +8,14 @@ class RecycleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        padding: MediaQuery.of(context).padding,
         child: Container(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            
             children: [
-              const SizedBox(height: 32),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -33,21 +35,7 @@ class RecycleScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Colors.black.withOpacity(0.08),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.search),
-                          onPressed: () {},
-                        ),
-                      ),
-                      const SizedBox(width: 8),
+                   const SizedBox(width: 8),
                       Container(
                         width: 42,
                         height: 42,
@@ -80,13 +68,13 @@ class RecycleScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Center(
                 child: Column(
                   children: [
                     Container(
-                      width: 298,
-                      height: 179,
+                      width: 298.w,
+                      height: 179.h,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage("assets/images/recycle.png"),
@@ -151,10 +139,10 @@ class RecycleScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 40),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) => const RecycleFoodScreen(),

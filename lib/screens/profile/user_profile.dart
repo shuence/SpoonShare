@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spoonshare/models/users/user.dart';
+import 'package:spoonshare/screens/profile/settings_page.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_form.dart';
 import 'package:spoonshare/services/auth.dart';
 import 'package:image_picker/image_picker.dart';
@@ -66,15 +67,26 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    contactController.dispose();
+    orgController.dispose();
+    roleController.dispose();
+    profileImageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: MediaQuery.of(context).padding,
         child: Padding(
           padding: const EdgeInsets.all(18.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -105,6 +117,29 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(width: 8),
+                      Container(
+                        width: 42,
+                        height: 42,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFFFF9F1C),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.settings),
+                          color: Colors.white,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingPage(),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                       const SizedBox(width: 8),
                       Container(
                         width: 42,
@@ -419,7 +454,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           ),
         ),
       ),
-      
     );
   }
 

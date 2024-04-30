@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/screens/home/MainPage.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/onboarding.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:spoonshare/screens/main_bottom_nav/main_bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,14 +29,16 @@ class HomeScreen extends StatelessWidget {
 
           return userProfile.isAuthenticated()
               ? Center(
-                  child: MainPage(name: name, role: role),
+                  child: MainBottomNav(name: name, role: role),
                 )
               : Container();
         } else {
           _requestLocationPermissions(context);
           return const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Color(0xffFF9F1C),
+              ),
             ),
           );
         }

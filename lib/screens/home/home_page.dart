@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spoonshare/widgets/maps_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_daily_cards.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_food_cards.dart';
 import 'package:spoonshare/widgets/foodcards/past_food_cards.dart';
@@ -16,16 +16,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SafeArea(
+      child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20,),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.w,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
+              SizedBox(height: 10.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -57,21 +60,7 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Colors.black.withOpacity(0.08),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.search),
-                          onPressed: () {},
-                        ),
-                      ),
-                      const SizedBox(width: 8),
+                     const SizedBox(width: 8),
                       Container(
                         width: 42,
                         height: 42,
@@ -134,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedIndex = 1; // Update selected index
+                        selectedIndex = 1; 
                       });
                     },
                     child: Text(
@@ -159,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 1, // Adjust the height of the line as needed
+                      height: 1,
                       color: selectedIndex == 0
                           ? const Color(0xFFFF9F1C)
                           : const Color(0x28FF9F1C),
@@ -168,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 1, // Adjust the height of the line as needed
+                      height: 1, 
                       color: selectedIndex == 1
                           ? const Color.fromARGB(255, 201, 141, 58)
                           : const Color(0x28FF9F1C),
@@ -204,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-                   Visibility(
+              Visibility(
                 visible: selectedIndex == 0,
                 child: Container(
                   margin: const EdgeInsets.only(top: 30),
@@ -232,7 +221,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            
               Visibility(
                 visible: selectedIndex != 0,
                 child: Column(
@@ -253,17 +241,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MapsWidget()));
-        },
-        backgroundColor: const Color(0xFFFF9F1C),
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.location_on),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

@@ -11,7 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spoonshare/models/users/user.dart';
-import 'package:spoonshare/screens/ngo/ngo_home.dart';
+import 'package:spoonshare/screens/home/home.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
@@ -487,77 +487,103 @@ class NGOFormScreenState extends State<NGOFormScreen> {
     }
   }
 
-  Future<void> _submitForm() async {
-    if (_validateFields()) {
-      try {
-        // Upload image to Firebase Storage
-        String imageUrl = await uploadImageToFirebaseStorage(
-          _imageFile,
-          _ngoNameController.text,
-        );
+Future<void> _submitForm() async {
+  if (_validateFields()) {
+    try {
+      // Show loader
+      showDialog(
+        context: context,
+        barrierDismissible: false, // Prevent dialog from being dismissed
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('Submitting Form...'),
+              ],
+            ),
+          );
+        },
+      );
 
-        GeoPoint location = GeoPoint(lat, lng);
+      // Upload image to Firebase Storage
+      String imageUrl = await uploadImageToFirebaseStorage(
+        _imageFile,
+        _ngoNameController.text,
+      );
 
-        await FirebaseFirestore.instance.collection('ngos').add({
-          'ngoName': _ngoNameController.text,
-          'ngoNo': _ngoNoController.text,
-          'mobileNo': _mobileNoController.text,
-          'email': _emailController.text,
-          'ngoImage': imageUrl,
-          'type': _selectedType,
-          'incorporationDay': _selectedIncorporationDay,
-          'description': _decripationController.text,
-          'address': _addressController.text,
-          'location': location,
-          'linkedin': _linkedinController.text,
-          'verified': false,
-        });
+      GeoPoint location = GeoPoint(lat, lng);
 
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('organisation', _ngoNameController.text);
-        prefs.setString('role', 'NGO');
+      DocumentReference docRef = await FirebaseFirestore.instance.collection('ngos').add({
+        'ngoName': _ngoNameController.text,
+        'ngoNo': _ngoNoController.text,
+        'mobileNo': _mobileNoController.text,
+        'email': _emailController.text,
+        'ngoImage': imageUrl,
+        'type': _selectedType,
+        'incorporationDay': _selectedIncorporationDay,
+        'description': _decripationController.text,
+        'address': _addressController.text,
+        'location': location,
+        'linkedin': _linkedinController.text,
+        'verified': false,
+      });
 
-        CollectionReference users =
-            FirebaseFirestore.instance.collection('users');
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('organisation', _ngoNameController.text);
+      prefs.setString('role', 'NGO');
 
-        String userId = FirebaseAuth.instance.currentUser!.uid;
+      CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-        await users.doc(userId).update({
-          'organisation': _ngoNameController.text,
-          'role': 'NGO',
-        });
+      String userId = FirebaseAuth.instance.currentUser!.uid;
 
-        _ngoNameController.clear();
-        _mobileNoController.clear();
-        _emailController.clear();
-        _decripationController.clear();
-        _addressController.clear();
-        _linkedinController.clear();
-        _selectedType = null;
-        _selectedIncorporationDay = null;
+      await users.doc(userId).update({
+        'organisation': _ngoNameController.text,
+        'role': 'NGO',
+      });
+      print(_ngoNameController.text);
 
-        // Show success message if submission is successful
-        showSuccessSnackbar(
-          context,
-          'Form submitted successfully. We will get back to you soon.',
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const NGOHomeScreen(),
-          ),
-        );
-      } catch (error) {
-        showErrorSnackbar(
-          context,
-          'Error submitting form. Please try again later.',
-        );
-      }
-    } else {
+      _ngoNameController.clear();
+      _mobileNoController.clear();
+      _emailController.clear();
+      _decripationController.clear();
+      _addressController.clear();
+      _linkedinController.clear();
+      _selectedType = null;
+      _selectedIncorporationDay = null;
+
+      // Close the dialog
+      Navigator.pop(context);
+
+      showSuccessSnackbar(
+        context,
+        'Form submitted successfully. We will get back to you soon.',
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        ),
+      );
+    } catch (error) {
+      // Close the dialog
+      Navigator.pop(context);
+
       showErrorSnackbar(
         context,
-        'Please fill all the required fields',
+        'Error submitting form. Please try again later.',
       );
     }
+  } else {
+    showErrorSnackbar(
+      context,
+      'Please fill all the required fields',
+    );
   }
 }
+
+}
+
+

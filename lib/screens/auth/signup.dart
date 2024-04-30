@@ -133,9 +133,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Container(
                   width: ScreenUtil().setWidth(218),
                   height: ScreenUtil().setHeight(38),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(width: 1),
@@ -366,10 +365,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       Navigator.of(context).pop();
 
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const HomeScreen()),
+                        ModalRoute.withName('/'),
                       );
                     } catch (e) {
                       print("Signup failed: $e");
@@ -388,7 +388,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   child: SizedBox(
-                    width: 300.h,
+                    width: 250.h,
                     height: 45.h,
                     child: Center(
                       child: Text(

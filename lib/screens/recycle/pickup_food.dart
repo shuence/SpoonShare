@@ -10,7 +10,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
-import 'package:spoonshare/widgets/bottom_navbar.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
@@ -593,34 +592,35 @@ class RecycleFoodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Recycle Food'),
-          backgroundColor: const Color(0xFF06D801),
-          titleTextStyle: const TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lora',
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+      appBar: AppBar(
+        title: const Text('Recycle Food'),
+        backgroundColor: const Color(0xFF06D801),
+        titleTextStyle: const TextStyle(
             color: Colors.white,
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            fontFamily: 'Lora',
+            fontSize: 18,
+            fontWeight: FontWeight.w700),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+        child: const SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              RecycleFoodScreenContent(),
+            ],
           ),
         ),
-        body: Container(
-          padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
-          child: const SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20),
-                RecycleFoodScreenContent(),
-              ],
-            ),
-          ),
-        ),
-        bottomNavigationBar: const BottomNavBar());
+      ),
+      // bottomNavigationBar: const BottomNavBar()
+    );
   }
 }

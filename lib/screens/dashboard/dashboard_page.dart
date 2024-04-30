@@ -15,28 +15,30 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Join Us'),
-        backgroundColor: const Color(0xFFFF9F1C),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontFamily: 'DM Sans',
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: SingleChildScrollView(
+    return
+      // Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('Join Us'),
+      //   backgroundColor: const Color(0xFFFF9F1C),
+      //   titleTextStyle: const TextStyle(
+      //     color: Colors.white,
+      //     fontFamily: 'DM Sans',
+      //     fontSize: 18,
+      //     fontWeight: FontWeight.w700,
+      //   ),
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     color: Colors.white,
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
+      // body:
+      SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 80,
+          height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,
           ),
@@ -191,7 +193,6 @@ class _DashboardPageState extends State<DashboardPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

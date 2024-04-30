@@ -85,7 +85,9 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator(
+            color: const Color(0xFFFF9F1C),
+          ))
           : isVerified
               ? SingleChildScrollView(
                   child: _buildVerifiedContent(),
@@ -118,7 +120,7 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
                       ),
                     ),
                     Text(
-                      role ?? '',
+                      role ?? 'NGO',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         fontSize: 16,
@@ -242,7 +244,7 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
                       ),
                     ),
                     Text(
-                      role ?? '',
+                      role ?? 'NGO',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         fontSize: 16,

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'package:spoonshare/constants/app_constants.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
+import 'package:spoonshare/utils/app_text_style.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class NearbyFoodCard extends StatelessWidget {
   const NearbyFoodCard({super.key});
@@ -51,104 +58,129 @@ class NearbyFoodCard extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
 
-        return Card(
-          margin: const EdgeInsets.all(8),
-          elevation: 8,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(data['imageUrl'] ?? ''),
-                    fit: BoxFit.cover,
+        return Padding(
+          padding: EdgeInsets.only(bottom: 24.h),
+          child: GestureDetector(
+            onTap: () => _navigateToFoodDetails(context, data),
+            child: Container(
+              width: 312.w,
+              height: 220.h,
+              decoration: BoxDecoration(
+                color: AppColors.basePrimaryColor,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 5,
+                    color: AppColors.kBlackColor.withOpacity(0.4),
                   ),
+                ],
+                image: DecorationImage(
+                  image: NetworkImage(data['imageUrl'] ?? ''),
+                  fit: BoxFit.cover,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.location_on, size: 16),
-                        const SizedBox(height: 6),
-                        Flexible(
-                          child: Text(
-                            data['venue'],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w700,
+              child: Stack(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 10.0,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 219.0,
+                              decoration: BoxDecoration(
+                                color: AppColors.kWhiteColor.withOpacity(0.6),
+                                borderRadius: BorderRadius.circular(32.0),
+                                border:
+                                    Border.all(color: AppColors.kWhiteColor),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 7.0,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const Icon(Icons.location_on_outlined),
+                                  const SizedBox(width: 4.0),
+                                  Expanded(
+                                    child: Text(
+                                      _truncateText(data['venue'], 20),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            textAlign: TextAlign.center,
+                            const Spacer(),
+                            Column(
+                              children: [
+                                _circularButton(
+                                  icon: Icons.favorite_border_outlined,
+                                  onTap: () {},
+                                ),
+                                const SizedBox(height: 12.0),
+                                _circularButton(
+                                  icon: Icons.share_rounded,
+                                  onTap: () => _shareFoodCard(data),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 8.0,
+                        ),
+                        child: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(16.0, 18.0, 16.0, 11.0),
+                          decoration: BoxDecoration(
+                            color: AppColors.kWhiteColor,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              _customText(
+                                headerText: 'UPLOADED BY:',
+                                text: '${data['fullName']}',
+                              ),
+                              _customVerticalDivider(),
+                              _customText(
+                                headerText: 'FOOD TYPE:',
+                                text: '${data['foodType']}',
+                              ),
+                              _customVerticalDivider(),
+                              _customText(
+                                headerText: 'UPLOAD TIME:',
+                                text: uploadTime,
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(width: 8), // Add some spacing here
-                        if (isNGOVerified)
-                          const Icon(Icons.verified,
-                              color: Colors.green, size: 16),
-                        if (!isNGOVerified)
-                          const Icon(Icons.cancel, color: Colors.red, size: 16),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      data['address'],
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: "DM Sans",
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(height: 0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Uploaded By: ${data['fullName']}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'Food Type: ${data['foodType']}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(top: 4, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  'Uploaded: $uploadTime',
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'DM Sans',
-                    fontWeight: FontWeight.w700,
+                    ],
                   ),
-                  textAlign: TextAlign.center,
-                ),
+                  if (isNGOVerified)
+                    Positioned(
+                      left: 100.w,
+                      bottom: 62.h,
+                      child: ngoVerifiedWidget(),
+                    ),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },
@@ -178,7 +210,8 @@ class NearbyFoodCard extends StatelessWidget {
             if (positionSnapshot.connectionState == ConnectionState.waiting) {
               return Container(
                 alignment: Alignment.center,
-                child: const CircularProgressIndicator(),
+                child:
+                    const CircularProgressIndicator(color: Color(0xffFF9F1C)),
               );
             } else if (positionSnapshot.hasError) {
               return Text('Error: ${positionSnapshot.error}');
@@ -264,4 +297,153 @@ class NearbyFoodCard extends StatelessWidget {
 
     return combinedDateTime.isBefore(currentDateTime);
   }
+}
+
+Widget ngoVerifiedWidget() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
+    decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50.r),
+        ),
+        color: AppColors.kGreenColor),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.check_circle_outline,
+          color: AppColors.kWhiteColor,
+        ),
+        SizedBox(
+          width: 4.w,
+        ),
+        Text(
+          "NGO VERIFIED",
+          style:
+              AppTextStyle.regularSmall.copyWith(color: AppColors.kWhiteColor),
+        ),
+      ],
+    ),
+  );
+}
+
+// Helper function to truncate text
+String _truncateText(String text, int maxLength) {
+  return (text.length > maxLength)
+      ? '${text.substring(0, maxLength)}...'
+      : text;
+}
+
+// Helper function to build circular buttons
+Widget _circularButton({required IconData icon, required Function() onTap}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: CircleAvatar(
+      radius: 20,
+      backgroundColor: AppColors.kWhiteColor.withOpacity(0.6),
+      child: Icon(
+        icon,
+        color: AppColors.kBlackColor,
+      ),
+    ),
+  );
+}
+
+// Helper function to build custom text widgets
+Widget _customText({required String headerText, required String text}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        headerText,
+        style: TextStyle(
+          fontSize: 10.sp,
+          color: Colors.grey,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      const SizedBox(height: 4.0),
+      Text(
+        text,
+        style: TextStyle(
+          fontSize: 12.sp,
+          color: AppColors.kBlackColor,
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _customVerticalDivider() {
+  return Container(
+    height: 20.0,
+    width: 1.0,
+    color: Colors.grey,
+    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+  );
+}
+
+Future<void> _shareImageFromUrl(
+    String imageUrl,
+    String venue,
+    String foodType,
+    String address,
+    String community,
+    String fromdate,
+    String fromtime,
+    String todate,
+    String totime,
+    bool dailyactive,
+    GeoPoint location) async {
+  try {
+    http.Response response = await http.get(Uri.parse(imageUrl));
+
+    Directory tempDir = await getTemporaryDirectory();
+    File imageFile = File('${tempDir.path}/food_image.jpg');
+
+    await imageFile.writeAsBytes(response.bodyBytes);
+
+    double latitude = location.latitude;
+    double longitude = location.longitude;
+
+    String formattedVenue = venue.replaceAll(' ', '%20');
+
+    String googleMapsUrl =
+        'https://www.google.com/maps/dir/?api=1&destination=$formattedVenue&destination_place_id=$latitude,$longitude';
+
+    await Share.shareXFiles(
+      [XFile(imageFile.path)],
+      text: '''
+Check out this free food at $venue.
+They are offering $foodType, at $address, for the community $community.
+The food will be available from $fromdate $fromtime to $todate $totime.
+Daily Active: $dailyactive
+
+You can directly go and have food : $googleMapsUrl,
+
+
+Download the SpoonShare app to find more such free food near you:
+https://spoonshare.vercel.app/
+''',
+    );
+  } catch (e) {
+    print('Error sharing image: $e');
+  }
+}
+
+void _shareFoodCard(Map<String, dynamic> data) {
+  String venue = data['venue'];
+  String imageUrl = data['imageUrl'] ?? '';
+  String foodType = data['foodType'];
+  String address = data['address'];
+  String community = data['community'] ?? 'N/A';
+  bool dailyActive = data['dailyActive'];
+  String fromdate = data['date'] ?? '';
+  String fromtime = data['time'] ?? '';
+  String todate = data['toDate'] ?? '';
+  String totime = data['toTime'] ?? '';
+  GeoPoint location = data['location'];
+
+  _shareImageFromUrl(imageUrl, venue, foodType, address, community, fromdate,
+      fromtime, todate, totime, dailyActive, location);
 }

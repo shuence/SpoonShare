@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spoonshare/models/users/user.dart';
@@ -101,7 +100,6 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
 
     return SingleChildScrollView(
       child: SizedBox(
-        height: 810.h,
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,7 +118,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
               ),
               if (showExpandedList)
                 Container(
-                  height: 200, // Set the height of the suggestions container
+                  height: 200,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -488,7 +486,6 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
     return Container(
       width: screenWidth * 0.8667,
       height: screenHeight * 0.05625,
-      margin: const EdgeInsets.only(top: 20),
       decoration: BoxDecoration(
         color: const Color(0xFFFF9F1C),
         borderRadius: BorderRadius.circular(50),

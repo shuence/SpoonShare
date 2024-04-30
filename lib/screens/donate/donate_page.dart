@@ -20,7 +20,10 @@ class _DonatePageState extends State<DonatePage> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height + 10.h,
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top,
+          ),
           clipBehavior: Clip.antiAlias,
           decoration: const BoxDecoration(color: Colors.white),
           child: Column(
@@ -62,8 +65,8 @@ class _DonatePageState extends State<DonatePage> {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                width: 275,
-                height: 69,
+                width: 275.w,
+                height: 80.h,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -190,10 +193,9 @@ class _DonatePageState extends State<DonatePage> {
                   ],
                 ),
               ),
-             SizedBox(height: 250,
-              child: Container(
+              Container(
                 width: 320.w,
-                height: 300.h,
+                height: 290.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/girlthinking.png"),
@@ -201,7 +203,7 @@ class _DonatePageState extends State<DonatePage> {
                   ),
                 ),
               )
-             ),
+            
             ],
           ),
         ),
