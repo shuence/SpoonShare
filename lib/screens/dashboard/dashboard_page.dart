@@ -38,7 +38,7 @@ class _DashboardPageState extends State<DashboardPage> {
       SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 80,
+          height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,
           ),

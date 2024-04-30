@@ -35,9 +35,6 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height + 10.h,
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(

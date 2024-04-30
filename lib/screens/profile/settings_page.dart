@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spoonshare/screens/auth/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:spoonshare/constants/app_colors.dart';
 import 'package:spoonshare/services/auth.dart';
@@ -29,7 +30,7 @@ class SettingPage extends StatelessWidget {
           },
         ),
       ),
-    body: Container(
+      body: Container(
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
@@ -40,8 +41,9 @@ class SettingPage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.help),
               title: const Text('Help'),
-              onTap: () {
-                // Add onTap functionality (e.g., navigate to a help page within your app)
+              onTap: () async {
+                final url = Uri.parse('mailto:spoonshare7@gmail.com');
+                await launchUrl(url);
               },
             ),
             const Divider(),
@@ -49,27 +51,30 @@ class SettingPage extends StatelessWidget {
               leading: const Icon(Icons.lock),
               title: const Text('Change Password'),
               onTap: () {
-                // Implement change password functionality within your app.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ForgotPasswordScreen()),
+                );
               },
             ),
             const Divider(),
             ListTile(
-              leading: const Icon(Icons.library_books),
-              title: const Text('Privacy Policy'),
-              onTap: () async {
-                final url = Uri.parse('https://www.termsfeed.com/live/6c1ed152-889a-47e8-bd6b-0d6012626d40');
+                leading: const Icon(Icons.library_books),
+                title: const Text('Privacy Policy'),
+                onTap: () async {
+                  final url = Uri.parse(
+                      'https://www.termsfeed.com/live/6c1ed152-889a-47e8-bd6b-0d6012626d40');
                   await launchUrl(url);
-                }                
-            ),
+                }),
             const Divider(),
             ListTile(
-              leading: const Icon(Icons.report),
-              title: const Text('Report Problem'),
-              onTap: () async {
-                final url = Uri.parse('https://forms.gle/RegtZGpSot3w4GxA9');
+                leading: const Icon(Icons.report),
+                title: const Text('Report Problem'),
+                onTap: () async {
+                  final url = Uri.parse('https://forms.gle/RegtZGpSot3w4GxA9');
                   await launchUrl(url);
-                }
-            ),
+                }),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.exit_to_app),

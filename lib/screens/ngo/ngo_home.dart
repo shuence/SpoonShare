@@ -85,7 +85,9 @@ class _NGOHomeScreenState extends State<NGOHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator(
+            color: const Color(0xFFFF9F1C),
+          ))
           : isVerified
               ? SingleChildScrollView(
                   child: _buildVerifiedContent(),

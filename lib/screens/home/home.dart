@@ -36,7 +36,9 @@ class HomeScreen extends StatelessWidget {
           _requestLocationPermissions(context);
           return const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Color(0xffFF9F1C),
+              ),
             ),
           );
         }

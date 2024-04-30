@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Spoon Share',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+            colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xffFF9F1C)),
             useMaterial3: true,
           ),
           home: const SplashScreen(),

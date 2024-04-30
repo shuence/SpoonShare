@@ -50,9 +50,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Container(
             width: ScreenUtil().screenWidth,
             height: 860.h,
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
