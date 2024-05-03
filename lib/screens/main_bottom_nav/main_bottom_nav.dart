@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spoonshare/constants/app_constants.dart';
 import 'package:spoonshare/screens/admin/admin_home.dart';
 import 'package:spoonshare/screens/dashboard/dashboard_page.dart';
@@ -67,34 +68,54 @@ class _MainBottomNavState extends State<MainBottomNav>
   }
 
   List<BottomNavigationBarItem> _navBarsItems() {
-    return [
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.home),
-        icon: Icon(Icons.home),
-        label: "Home",
+  return [
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        _tabController.index == 0 ? BottomBarIcons.home_filled : BottomBarIcons.home,
+        width: 24,
+        height: 24,
+        color: _tabController.index == 0 ? AppColors.basePrimaryColor : null,
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.dashboard),
-        icon: Icon(Icons.dashboard),
-        label: "Dashboard",
+      label: "Home",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        _tabController.index == 1 ? BottomBarIcons.dashboard_filled : BottomBarIcons.dashboard,
+        width: 24,
+        height: 24,
+        color: _tabController.index == 1 ? AppColors.basePrimaryColor : null,
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.add_circle),
-        icon: Icon(Icons.add_circle),
-        label: "Donate",
+      label: "Dashboard",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        _tabController.index == 2 ? BottomBarIcons.donate_filled : BottomBarIcons.donate,
+        width: 24,
+        height: 24,
+        color: _tabController.index == 2 ? AppColors.basePrimaryColor : null,
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.recycling),
-        icon: Icon(Icons.recycling),
-        label: "Recycle",
+      label: "Donate",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        _tabController.index == 3 ? BottomBarIcons.recycle_filled : BottomBarIcons.recycle,
+        width: 24,
+        height: 24,
+        color: _tabController.index == 3 ? AppColors.basePrimaryColor : null,
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.person),
-        icon: Icon(Icons.person),
-        label: "Profile",
+      label: "Recycle",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        _tabController.index == 4 ? BottomBarIcons.profile_filled : BottomBarIcons.profile,
+        width: 24,
+        height: 24,
+        color: _tabController.index == 4 ? AppColors.basePrimaryColor : null,
       ),
-    ];
-  }
+      label: "Profile",
+    ),
+  ];
+}
 
   @override
   Widget build(BuildContext context) {

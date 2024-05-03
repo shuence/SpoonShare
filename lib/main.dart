@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spoonshare/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spoonshare/firebase_options.dart';
 import 'package:spoonshare/services/notifications_services.dart';
 import 'package:spoonshare/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'common_blocs/common_blocs.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -19,9 +20,10 @@ void main() async {
   );
   NotificationServices().firebaseInit();
   await SharedPreferences.getInstance();
+  
   runApp(
     DevicePreview(
-       enabled: !kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (context) => const MyApp(),
     ),
   );
@@ -34,15 +36,33 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-NavigatorState? get _navigator => navigatorKey.currentState;
-
- onNavigateSplash() {
-  _navigator!.pushAndRemoveUntil(MaterialPageRoute(builder: (context) {
-    return const SplashScreen();
-  }), (route) => false);
-}
-
 class _MyAppState extends State<MyApp> {
+  late AppUpdateInfo _updateInfo; // Updated: Declare _updateInfo here
+
+  @override
+  void initState() {
+    super.initState();
+    _checkForUpdate();
+  }
+
+  Future<void> _checkForUpdate() async {
+    try {
+      final info = await InAppUpdate.checkForUpdate();
+      setState(() {
+        _updateInfo = info;
+      });
+    } catch (e) {
+      _showSnack(e.toString());
+    }
+  }
+
+  void _showSnack(String text) {
+    if (navigatorKey.currentState != null) {
+      ScaffoldMessenger.of(navigatorKey.currentState!.context)
+          .showSnackBar(SnackBar(content: Text(text)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

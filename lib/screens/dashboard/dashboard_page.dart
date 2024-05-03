@@ -40,7 +40,7 @@ class _DashboardPageState extends State<DashboardPage> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
+            top: MediaQuery.of(context).padding.top + 20,
           ),
           clipBehavior: Clip.antiAlias,
           decoration: const BoxDecoration(color: Colors.white),

@@ -25,8 +25,14 @@ class FoodDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Food Details:',
+        title: Text(
+          _truncateText(data['venue'], 20),
+          style: const TextStyle(
+            color: Colors.white,
+            fontFamily: 'DM Sans',
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
@@ -86,16 +92,14 @@ class FoodDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                      Radius.circular(50),
-                    )),
-                    child: Image.network(
-                      data['imageUrl'] ?? '',
-                      height: 250,
-                      width: 400,
-                      fit: BoxFit.cover,
+                    width: 400,
+                    height: 250,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: NetworkImage(data['imageUrl'] ?? ''),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Padding(
@@ -220,7 +224,6 @@ class FoodDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-      
     );
   }
 
@@ -235,5 +238,12 @@ class FoodDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Helper function to truncate text
+  String _truncateText(String text, int maxLength) {
+    return (text.length > maxLength)
+        ? '${text.substring(0, maxLength)}...'
+        : text;
   }
 }
