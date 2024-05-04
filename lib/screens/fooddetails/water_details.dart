@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 
-class FoodDetailsScreen extends StatelessWidget {
-  final Map<String, dynamic> data;
+class WaterDetailsScreen extends StatelessWidget {
+  final QueryDocumentSnapshot waterDoc;
 
-  const FoodDetailsScreen({required this.data, Key? key}) : super(key: key);
+  const WaterDetailsScreen({required this.waterDoc, Key? key}) : super(key: key);
 
   Future<void> _launchMaps(String location) async {
     final Uri uri = Uri.parse(
@@ -26,7 +27,7 @@ class FoodDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _truncateText(data['venue'], 20),
+          _truncateText(waterDoc['venue'], 20),
           style: const TextStyle(
             color: Colors.white,
             fontFamily: 'DM Sans',
@@ -56,7 +57,7 @@ class FoodDetailsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(0),
               child: Text(
-                '${data['venue'] ?? ''}',
+                '${waterDoc['venue'] ?? ''}',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -97,7 +98,7 @@ class FoodDetailsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                        image: NetworkImage(data['imageUrl'] ?? ''),
+                        image: NetworkImage(waterDoc['imageUrl'] ?? ''),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -106,7 +107,7 @@ class FoodDetailsScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     child: Text(
-                      'Venue: ${data['venue'] ?? ''}',
+                      'Venue: ${waterDoc['venue'] ?? ''}',
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -117,7 +118,7 @@ class FoodDetailsScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     child: Text(
-                      'Uploaded By: ${data['fullName'] ?? ''}',
+                      'Uploaded By: ${waterDoc['fullName'] ?? ''}',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
@@ -125,14 +126,14 @@ class FoodDetailsScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     child: Text(
-                      'Location: ${data['address'] ?? ''}',
+                      'Location: ${waterDoc['address'] ?? ''}',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(12),
                     child: ElevatedButton(
-                      onPressed: () => _launchMaps(data['address']),
+                      onPressed: () => _launchMaps(waterDoc['address']),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFF9F1C),
                         foregroundColor: Colors.white,

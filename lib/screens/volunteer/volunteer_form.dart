@@ -229,7 +229,7 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'LinkedIn/Instagram Profile Links*',
+              label: 'LinkedIn/Instagram Profile Links',
               controller: _linkedinController,
             ),
             const SizedBox(height: 16),

@@ -8,8 +8,8 @@ import 'package:intl/intl.dart';
 import 'package:location/location.dart' as location;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:spoonshare/screens/admin/all_ngos.dart';
-import 'package:spoonshare/screens/admin/verfy_shared_water.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
+import 'package:spoonshare/screens/fooddetails/water_details.dart';
 
 class MapsWidget extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _MapsWidgetState extends State<MapsWidget> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => WaterDetailsPage(waterDoc: data),
+        builder: (context) => WaterDetailsScreen(waterDoc: data),
       ),
     );
   }
