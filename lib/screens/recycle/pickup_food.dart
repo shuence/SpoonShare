@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spoonshare/constants/app_constants.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
@@ -409,7 +410,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
       height: screenHeight * 0.05625,
       margin: const EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
-        color: const Color(0xFFFF9F1C),
+        color: AppColors.kGreenColor,
         borderRadius: BorderRadius.circular(50),
       ),
       child: InkWell(
@@ -528,13 +529,13 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Color(0xFFFF9F1C),
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Color(0xFFFF9F1C),
               ),
             ),

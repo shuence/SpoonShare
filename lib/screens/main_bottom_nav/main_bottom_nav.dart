@@ -115,7 +115,7 @@ class _MainBottomNavState extends State<MainBottomNav>
               : BottomBarIcons.recycle,
           width: 24,
           height: 24,
-          color: _tabController.index == 3 ? AppColors.basePrimaryColor : null,
+          color: _tabController.index == 3 ? AppColors.kGreenColor : null,
         ),
         label: "Recycle",
       ),
@@ -172,7 +172,9 @@ class _MainBottomNavState extends State<MainBottomNav>
               showSelectedLabels: true,
               showUnselectedLabels: true,
               items: _navBarsItems(),
-              selectedItemColor: AppColors.basePrimaryColor,
+              selectedItemColor: _tabController.index == 3
+                  ? AppColors.kGreenColor
+                  : AppColors.basePrimaryColor,
               currentIndex: _tabController.index,
             ),
             floatingActionButton: _tabController.index == 0

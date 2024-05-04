@@ -320,16 +320,3 @@ Future<void> _deleteWater(DocumentSnapshot waterDoc, BuildContext context) async
     showErrorSnackbar(context, 'Error deleting water');
   }
 }
-
-Widget _buildCell(String text) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Text(
-      text,
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-}
