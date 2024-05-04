@@ -13,17 +13,14 @@ class Onboarding extends StatelessWidget {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
+            height: MediaQuery.of(context).size.height,         
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 146.h,
+                  height: 160.h,
                   decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -51,6 +48,7 @@ class Onboarding extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 30.h),
                 Container(
                   width: 241.w,
                   height: 241.h,
@@ -119,7 +117,7 @@ class Onboarding extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -183,63 +181,7 @@ class Onboarding extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  child: SizedBox(
-                    width: 296,
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text:
-                                'By signing up, you confirm that you have read and agreed to SpoopShare’s ',
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                              fontSize: 11,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
-                          ),
-                          const TextSpan(
-                            text: 'Privacy Policy',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 11,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w400,
-                              decoration: TextDecoration.underline,
-                              height: 0,
-                            ),
-                          ),
-                          TextSpan(
-                            text: ' & ',
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                              fontSize: 11,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
-                          ),
-                          const TextSpan(
-                            text: 'Terms',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 11,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w400,
-                              decoration: TextDecoration.underline,
-                              height: 0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ],
+            ],
             ),
           ),
         ),

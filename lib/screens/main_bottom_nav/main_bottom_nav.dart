@@ -29,6 +29,7 @@ class MainBottomNav extends StatefulWidget {
 class _MainBottomNavState extends State<MainBottomNav>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool isDonatePageActive = false;
 
   @override
   void initState() {
@@ -46,7 +47,7 @@ class _MainBottomNavState extends State<MainBottomNav>
     return [
       HomePage(name: widget.name, role: widget.role),
       navigateToRoleScreen(context),
-      const DonatePage(),
+      DonatePage(),
       const RecycleScreen(),
       UserProfileScreen(name: widget.name, role: widget.role),
     ];
@@ -61,61 +62,76 @@ class _MainBottomNavState extends State<MainBottomNav>
       case 'Admin':
         return const AdminHomeScreen();
       case 'Individual':
-        return const DashboardPage();
+        return DashboardPage();
       default:
-        return const DashboardPage();
+        return DashboardPage();
     }
   }
 
   List<BottomNavigationBarItem> _navBarsItems() {
-  return [
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        _tabController.index == 0 ? BottomBarIcons.home_filled : BottomBarIcons.home,
-        width: 24,
-        height: 24,
-        color: _tabController.index == 0 ? AppColors.basePrimaryColor : null,
+    final bool isIndividual = widget.role == 'Individual';
+
+    return [
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 0
+              ? BottomBarIcons.home_filled
+              : BottomBarIcons.home,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 0 ? AppColors.basePrimaryColor : null,
+        ),
+        label: "Home",
       ),
-      label: "Home",
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        _tabController.index == 1 ? BottomBarIcons.dashboard_filled : BottomBarIcons.dashboard,
-        width: 24,
-        height: 24,
-        color: _tabController.index == 1 ? AppColors.basePrimaryColor : null,
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 1
+              ? isIndividual
+                  ? BottomBarIcons.joined_filled
+                  : BottomBarIcons.dashboard_filled
+              : isIndividual
+                  ? BottomBarIcons.join
+                  : BottomBarIcons.dashboard,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 1 ? AppColors.basePrimaryColor : null,
+        ),
+        label: isIndividual ? "Join" : "Dashboard",
       ),
-      label: "Dashboard",
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        _tabController.index == 2 ? BottomBarIcons.donate_filled : BottomBarIcons.donate,
-        width: 24,
-        height: 24,
-        color: _tabController.index == 2 ? AppColors.basePrimaryColor : null,
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 2
+              ? BottomBarIcons.donate_filled
+              : BottomBarIcons.donate,
+          width: 24,
+          height: 24,
+        ),
+        label: "Donate",
       ),
-      label: "Donate",
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        _tabController.index == 3 ? BottomBarIcons.recycle_filled : BottomBarIcons.recycle,
-        width: 24,
-        height: 24,
-        color: _tabController.index == 3 ? AppColors.basePrimaryColor : null,
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 3
+              ? BottomBarIcons.recycle_filled
+              : BottomBarIcons.recycle,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 3 ? AppColors.basePrimaryColor : null,
+        ),
+        label: "Recycle",
       ),
-      label: "Recycle",
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        _tabController.index == 4 ? BottomBarIcons.profile_filled : BottomBarIcons.profile,
-        width: 24,
-        height: 24,
-        color: _tabController.index == 4 ? AppColors.basePrimaryColor : null,
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 4
+              ? BottomBarIcons.profile_filled
+              : BottomBarIcons.profile,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 4 ? AppColors.basePrimaryColor : null,
+        ),
+        label: "Profile",
       ),
-      label: "Profile",
-    ),
-  ];
-}
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

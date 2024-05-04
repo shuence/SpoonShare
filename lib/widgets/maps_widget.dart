@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:location/location.dart' as location;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:spoonshare/screens/admin/all_ngos.dart';
+import 'package:spoonshare/screens/admin/verfy_shared_water.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
 
 class MapsWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   location.LocationData? currentLocation;
   late BitmapDescriptor customMarkerIcon;
   late BitmapDescriptor customNgoMarkerIcon;
+  late BitmapDescriptor customwaterMarkerIcon;
 
   @override
   void initState() {
@@ -67,14 +69,27 @@ class _MapsWidgetState extends State<MapsWidget> {
     );
   }
 
+  void _navigateTowaterDetails(BuildContext context, QueryDocumentSnapshot data) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WaterDetailsPage(waterDoc: data),
+      ),
+    );
+  }
+
   Future<void> _loadCustomMarker() async {
     Uint8List markerIcon =
         await getBytesFromAsset('assets/images/marker_icon.png', 100);
     customMarkerIcon = BitmapDescriptor.fromBytes(markerIcon);
 
     Uint8List ngoMarkerIcon =
-        await getBytesFromAsset('assets/images/ngo.png', 100);
+        await getBytesFromAsset('assets/images/ngo_marker.png', 100);
     customNgoMarkerIcon = BitmapDescriptor.fromBytes(ngoMarkerIcon);
+
+    Uint8List waterMarkerIcon =
+        await getBytesFromAsset('assets/images/water.png', 100);
+    customwaterMarkerIcon = BitmapDescriptor.fromBytes(waterMarkerIcon);
   }
 
   Future<List<Marker>> _initializeMap() async {
@@ -147,9 +162,6 @@ class _MapsWidgetState extends State<MapsWidget> {
       InfoWindow infoWindow = InfoWindow(
         title: name,
         snippet: "NGO location",
-        onTap: () {
-          _navigateToNgoDetails(context, doc);
-        },
       );
 
       Marker marker = Marker(
@@ -161,7 +173,38 @@ class _MapsWidgetState extends State<MapsWidget> {
 
       markers.add(marker);
     }
+    
 
+  // Add markers for water
+    QuerySnapshot waterSnapshot = await FirebaseFirestore.instance
+        .collection('water')
+        .doc('sharedWater')
+        .collection('waterData')
+        .where('verified', isEqualTo: true)
+        .get();
+
+    for (var doc in waterSnapshot.docs) {
+      double lat = doc['location'].latitude;
+      double lng = doc['location'].longitude;
+      String name = doc['venue'];
+
+      InfoWindow infoWindow = InfoWindow(
+        title: name,
+        snippet: "Water location",
+        onTap: () {
+          _navigateTowaterDetails(context, doc);
+        },
+      );
+
+      Marker marker = Marker(
+        markerId: MarkerId('$lat,$lng'),
+        position: LatLng(lat, lng),
+        infoWindow: infoWindow,
+        icon: customwaterMarkerIcon,
+      );
+
+      markers.add(marker);
+    }
     return markers;
   }
 

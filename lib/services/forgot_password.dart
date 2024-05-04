@@ -7,7 +7,7 @@ class ForgotPasswordService {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

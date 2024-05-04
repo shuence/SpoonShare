@@ -20,7 +20,7 @@ void main() async {
   );
   NotificationServices().firebaseInit();
   await SharedPreferences.getInstance();
-  
+
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
@@ -37,7 +37,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late AppUpdateInfo _updateInfo; // Updated: Declare _updateInfo here
+  late AppUpdateInfo _updateInfo;
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         _updateInfo = info;
       });
     } catch (e) {
-      _showSnack(e.toString());
+      print(e.toString());
     }
   }
 
@@ -76,7 +76,8 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Spoon Share',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xffFF9F1C)),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: const Color(0xffFF9F1C)),
             useMaterial3: true,
           ),
           home: const SplashScreen(),
