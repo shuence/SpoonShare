@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spoonshare/constants/app_constants.dart';
 import 'package:spoonshare/screens/admin/admin_home.dart';
 import 'package:spoonshare/screens/dashboard/dashboard_page.dart';
@@ -28,6 +29,7 @@ class MainBottomNav extends StatefulWidget {
 class _MainBottomNavState extends State<MainBottomNav>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool isDonatePageActive = false;
 
   @override
   void initState() {
@@ -45,7 +47,7 @@ class _MainBottomNavState extends State<MainBottomNav>
     return [
       HomePage(name: widget.name, role: widget.role),
       navigateToRoleScreen(context),
-      const DonatePage(),
+      DonatePage(),
       const RecycleScreen(),
       UserProfileScreen(name: widget.name, role: widget.role),
     ];
@@ -60,37 +62,72 @@ class _MainBottomNavState extends State<MainBottomNav>
       case 'Admin':
         return const AdminHomeScreen();
       case 'Individual':
-        return const DashboardPage();
+        return DashboardPage();
       default:
-        return const DashboardPage();
+        return DashboardPage();
     }
   }
 
   List<BottomNavigationBarItem> _navBarsItems() {
+    final bool isIndividual = widget.role == 'Individual';
+
     return [
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.home),
-        icon: Icon(Icons.home),
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 0
+              ? BottomBarIcons.home_filled
+              : BottomBarIcons.home,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 0 ? AppColors.basePrimaryColor : null,
+        ),
         label: "Home",
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.dashboard),
-        icon: Icon(Icons.dashboard),
-        label: "Dashboard",
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 1
+              ? isIndividual
+                  ? BottomBarIcons.joined_filled
+                  : BottomBarIcons.dashboard_filled
+              : isIndividual
+                  ? BottomBarIcons.join
+                  : BottomBarIcons.dashboard,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 1 ? AppColors.basePrimaryColor : null,
+        ),
+        label: isIndividual ? "Join" : "Dashboard",
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.add_circle),
-        icon: Icon(Icons.add_circle),
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 2
+              ? BottomBarIcons.donate_filled
+              : BottomBarIcons.donate,
+          width: 24,
+          height: 24,
+        ),
         label: "Donate",
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.recycling),
-        icon: Icon(Icons.recycling),
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 3
+              ? BottomBarIcons.recycle_filled
+              : BottomBarIcons.recycle,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 3 ? AppColors.basePrimaryColor : null,
+        ),
         label: "Recycle",
       ),
-      const BottomNavigationBarItem(
-        activeIcon: Icon(Icons.person),
-        icon: Icon(Icons.person),
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
+          _tabController.index == 4
+              ? BottomBarIcons.profile_filled
+              : BottomBarIcons.profile,
+          width: 24,
+          height: 24,
+          color: _tabController.index == 4 ? AppColors.basePrimaryColor : null,
+        ),
         label: "Profile",
       ),
     ];

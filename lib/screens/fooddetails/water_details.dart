@@ -130,81 +130,6 @@ class FoodDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Text(
-                      'Community: ${data['community'] ?? ''}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Text(
-                      'Food Type: ${data['foodType'] ?? ''}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ),
-                  if (data['dailyActive'] ?? false)
-                    const Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Text(
-                        'Availability: Daily',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Table(
-                      defaultVerticalAlignment:
-                          TableCellVerticalAlignment.middle,
-                      border: TableBorder.all(
-                        color: Colors.grey,
-                        width: 1.0,
-                      ),
-                      children: [
-                        TableRow(
-                          children: [
-                            TableCell(
-                              child: _buildCell('From'),
-                            ),
-                            TableCell(
-                              child: _buildCell('To'),
-                            ),
-                          ],
-                        ),
-                        if (!(data['dailyActive'] ?? false))
-                          TableRow(
-                            children: [
-                              TableCell(
-                                child: _buildCell(
-                                    _formatDate('${data['date'] ?? ''}')),
-                              ),
-                              TableCell(
-                                child: _buildCell(
-                                    _formatDate('${data['toDate'] ?? ''}')),
-                              ),
-                            ],
-                          ),
-                        TableRow(
-                          children: [
-                            TableCell(
-                              child: _buildCell('${data['time'] ?? ''}'),
-                            ),
-                            TableCell(
-                              child: _buildCell('${data['toTime'] ?? ''}'),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
                     padding: const EdgeInsets.all(12),
                     child: ElevatedButton(
                       onPressed: () => _launchMaps(data['address']),
@@ -222,19 +147,6 @@ class FoodDetailsScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCell(String text) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );

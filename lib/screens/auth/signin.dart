@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spoonshare/controllers/auth/signin_controller.dart';
 import 'package:spoonshare/screens/auth/forgot_password.dart';
 import 'package:spoonshare/screens/auth/signup.dart';
@@ -84,17 +85,13 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ],
                         ),
-                        Container(
+                        SvgPicture.asset(
+                          "assets/images/signin.svg",
                           width: 238,
                           height: 167,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/signin.png"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          fit: BoxFit.fill,
                         ),
-                        Container(
+                        SizedBox(
                           width: 275,
                           height: 73,
                           child: Column(
