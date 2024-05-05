@@ -194,7 +194,7 @@ flutter run
   </tr>
   <tr>
     <td align="center" width="25%">
-      <img src="https://i.ibb.co/ZdZKx8M/forgot.png" width="120"/><br>
+      <img src="https://i.postimg.cc/L55s6sCW/forgot.png" width="120"/><br>
       <b>Forgot Password Screen</b><br>
       User can request a forgot password link in case they forgot their password.
     </td>
