@@ -94,8 +94,8 @@ Join us in the mission to minimize food waste, foster community engagement, and 
 
 <table style="width: 100%;">
   <tr>
-    <p>➡️ Overall, our research highlighted the urgency and importance of addressing food insecurity, and Spoon Share emerged as a solution-driven platform to make a meaningful impact on this critical issue. </p>
-    <p>➡️ We also conducted a survey to get community response for some sought after features listed below.</p>
+    <p>➡ Overall, our research highlighted the urgency and importance of addressing food insecurity, and Spoon Share emerged as a solution-driven platform to make a meaningful impact on this critical issue. </p>
+    <p>➡ We also conducted a survey to get community response for some sought after features listed below.</p>
     <td>
       <img src="https://i.postimg.cc/d1n0sT28/image.png" alt="Image 1" style="width: 100%;">
     </td>
@@ -115,10 +115,42 @@ Join us in the mission to minimize food waste, foster community engagement, and 
    <td style="text-align: center;">
       <img src="https://i.postimg.cc/fRwDLbbC/image.png" alt="Image 3" style="width: 100%;">
     </td>
+    <td align="center">
+      <a href="https://docs.google.com/spreadsheets/d/1Bcgf7zRYbFl7vwU_tFBsIg6SJ6Otd16W3pAFJGr8b1k/edit?resourcekey#gid=1102024551" target="_blank">
+        <img src="https://i.postimg.cc/1tXcJvTV/e60725a5-9cfd-4547-8937-0a68ca730b03.jpg" alt="Image 1" width="250">
+      </a>
+      <br>
+      <b>SpoonShare FeedBacks Excel Sheet</b>
+    </td>
   </tr>
 </table>
 
-<hr>
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://youtu.be/gYjR6zsZcd0" target="_blank">
+        <img src="https://i.postimg.cc/vHQ7NSf2/image.png" alt="Image 1" width="250">
+      </a>
+      <br>
+      <b>SpoonShare FeedBacks</b>
+    </td>
+    <td align="center">
+      <a href="https://photos.app.goo.gl/x91E3NJ3JcX94yoM6" target="_blank">
+        <img src="https://i.postimg.cc/Pq2jnqqv/IMG20240502113610.jpg" alt="Image 2" width="250">
+      </a>
+      <br>
+      <b>Realtime Feedback</b>
+    </td>
+    <td align="center">
+      <a href="https://drive.google.com/file/d/1q9LeB-AVDsXh8Wi0wNFbHtjDgMsyDyjC/view?usp=drivesdk" target="_blank">
+        <img src="https://i.postimg.cc/vHQ7NSf2/image.png" alt="Image 3" width="250">
+      </a>
+      <br>
+      <b>Survey Report</b>
+    </td>
+  </tr>
+</table>
 
 ## Setup
 
@@ -147,17 +179,17 @@ flutter run
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/22.png" width="120"/><br>
       <b>Onboarding Screen</b><br>
-      Allows users to create a new account or log in if they already have one.
+      Allows users to create account or log.
     </td>
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/29.png" width="120"/><br>
       <b>Signup Screen</b><br>
-      Offers the option to create an account manually or swiftly continue using Google credentials.
+       Create an account manually or can  using Google credentials.
     </td>
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/23.png" width="120"/><br>
       <b>Signin Screen</b><br>
-      Offers the option to log in via email manually or swiftly continue using Google credentials.
+       Log in via email or continue using Google credentials.
     </td>
   </tr>
   <tr>
@@ -169,39 +201,39 @@ flutter run
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/24.png" width="120"/><br>
       <b>Home Screen</b><br>
-      Lists nearby locations within a 30km radius where free food is available.
+      Lists near by locations within range of 30km radius where free food is available        to people.
     </td>
     <td align="center" width="25%">
       <img src="https://i.postimg.cc/4nkk2wt1/fooddetails.png" width="120"/><br>
       <b>Food Details Card</b><br>
-      Provides detailed information about each location, including timings, food types, and map for location details.
+      Provides detailed information about proper timings, food types, and map for location.
     </td>
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/Black%20bezzel%20(5).png" width="120"/><br>
-      <b>Interactive Map Screen</b><br>
-      Displays various locations with free food availability, marked distinctly by our unique icon for easy identification.
+      <b>Interactive Map </b><br>
+      Displays various locations with free food availability, marked distinctly by our unique icon.
     </td>
   </tr>
   <tr>
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/31.png" width="120"/><br>
       <b>Donate Screen</b><br>
-      Enables individuals to donate food, share locations of free food availability, and share nearby water facilities.
+      Enables individuals to donate food to NGO, share locations of free food availability, and share nearby water facilities.
     </td>
     <td align="center" width="25%">
       <img src="https://i.postimg.cc/Zbfht5jS/freefood.png" width="120"/><br>
       <b>Share Free Food Screen</b><br>
-      Individuals can share available free food locations like public feasts or nearby events by filling out a form.
+      Individuals can share available free food locations like public feasts or nearby place by filling out a form.
     </td>
     <td align="center" width="25%">
       <img src="https://spoonshare.vercel.app/images/donation.png" width="120"/><br>
       <b>Donate Food Screen</b><br>
-      Allows individuals to donate surplus food from functions like public feasts or home by filling out a form.
+       Individuals to donate surplus food which they have from functions like public feasts, home by filling out a form.
     </td>
     <td align="center" width="25%">
       <img src="https://i.postimg.cc/xjhD8pWp/freewater.png" width="120"/><br>
       <b>Share Water Facilities Screen</b><br>
-      Individuals can share free water facilities available at public places like railway stations or bus stands by filling out a form.
+      Individuals can share free water facilities available at public places like bus stands by filling out a form.
     </td>
   </tr>
   <tr>
@@ -233,9 +265,19 @@ flutter run
       Admin ensures authenticity by verifying food listings before they appear on the app.
     </td>
     <td align="center" width="25%">
-      <img src="https://i.postimg.cc/j5xgfXv1/Black-bezzel.png" width="120"/><br>
-      <b>NGO Manage Screen</b><br>
-      Admin can manage NGO information within the app.
+      <img src="https://i.postimg.cc/MHpr8Lwm/Black-bezzel-4.png" width="120"/><br>
+      <b>Recycle Screen</b><br>
+      Connect with biogas plants for responsible disposal of expired food items
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/GmYv7jD7/Black-bezzel-6.png " width="120"/><br>
+      <b>Recycle Form Screen</b><br>
+      Individuals can share food for recycling by filling information about food types & location.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/50r1T8dy/Black-bezzel-5.png" width="120"/><br>
+      <b>User Profile Screen</b></br>
+      User Profile where user can see it and edit it also as per this convenience
     </td>
     <td colspan="2"></td>
   </tr>
@@ -297,7 +339,9 @@ We are a team from Deogiri Institute of Engineering And Management Studies Chh. 
 | [Sanika Chavan ](https://linkedin.com/in/sanika-chavan-52457b236/)| [Shubham Pitekar](https://github.com/shuence)| [Krishna Aute](https://www.linkedin.com/in/krishna-aute-195b2b135/)| [Mohammed Rehan](https://www.linkedin.com/in/mdrehan15/)|
 | ----------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/116996971?v=4"> | <img src="https://avatars.githubusercontent.com/u/65482186?v=4"> | <img src="https://i.postimg.cc/zvYf8bGj/image.jpg"> | <img src="https://i.postimg.cc/bvPLDLFc/image.jpg"> |
-| Project Manager| Flutter Developer| Firebase/PR | UI/UX Designer                              
+| Project Manager| Flutter Developer| Firebase/PR | UI/UX Designer                      
+
+![SpoonShare](https://i.postimg.cc/KYK4kZb3/image.png)
 ## Happy Innovating 💯
 
 Made with love from [InnovsionSquad]() ❤️
