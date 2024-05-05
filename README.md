@@ -1,20 +1,46 @@
 # SpoonShare 🥣
 
+## 💡 Introduction
+
 **Problem Statement**: Inadequate surplus food distribution generates hunger, necessitating a comprehensive solution. Our project addresses this challenge through an innovative platform, connecting donors with recipients to bridge the gap in food distribution.
 
+**Solution**: Spoon Share is an Android app tackling food insecurity by connecting surplus food donors with individuals and NGOs in need. Our platform reduces food waste, promotes sustainability, and supports the UN's Sustainable Development Goals of No Poverty and Zero Hunger by 2030. With real-time food listings, volunteer networks, and collaborative partnerships, Spoon Share empowers communities to make a positive impact on food distribution and well-being.
+
 A **Google Solution Challenge Project'24** Organised By Google Developer Student Clubs Project by **Team Innovision Squad From Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar.**
+
+## Intro To SpoonShare Video
+
+[![Intro To SpoonShare](https://i.postimg.cc/DyxhVPcg/youtube-thumbnail-1.png)
+](https://youtu.be/COQflZiXL4E)
+
+
+Short but detailed introduction to SpoonShare. Click on the image above to watch the video.
+
+
+### Our Target SDG Goals 🎯
+
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6OE7LnlmOsSNJyn7TgVrk80UxXjrcueJGWWDTm4EieQ&s" width="200"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwqKfuiTX9zNEyuBpzS2jhkqa21_LdPqRMnDVMDf_-oA&s" width="200"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwPfyIMD4sthlJSr1OPgV9DhC84VqzIzguaEVLABHn3Q&s" width="200"/>
+</p>
+
+Spoon Share is an Android app that fights food insecurity by connecting surplus food donors with those in need. Our goal is to reduce food waste, tackle child malnutrition, and promote sustainability. Join us in achieving UN Sustainable Development Goals 1 *(No Poverty)* and 2 *(Zero Hunger)* by 2030. Together, let's make a meaningful impact on food distribution and well-being.
+
+
 
  ## 💯 Project Achievements
  - [Global Top 100 | Google Solution Challenge](https://www.linkedin.com/posts/sanika-chavan-52457b236_in-top-100-teams-across-the-world-activity-7182764356382724096-2ID3?utm_source=share&utm_medium=member_desktop)
 - [Regional BootCamp - Mumbai | Google Solution Challenge](https://www.linkedin.com/posts/shuence_spoonshare-regionalbootcamp-mumbai-activity-7162722028817530882-f9iL?utm_source=share&utm_medium=member_desktop)
+- **Featured It The Lokmat Times**
+[![Lokmat](https://s3.ap-south-1.amazonaws.com/epaper.lokmat/eNewspaper/News/LOKTIME/LTCP/2024/04/18/ArticleImages/66204ae673445.jpg)](https://epaper.lokmat.com/articlepage.php?articleid=LOKTIME_LTCP_20240418_4_5)
 
-
-## Latest Version - v1.5.0
+## Latest Version - v1.4.0
 
 <table>
   <tr>
     <td>
-      <a href="https://github.com/shuence/SpoonShare/releases/download/v.1.5.0/SpoonShare.apk">
+      <a href="https://github.com/shuence/SpoonShare/releases/download/v.1.4.0/SpoonShare.apk">
         <img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Github" width="200">
       </a>
     </td>
@@ -34,15 +60,61 @@ A **Google Solution Challenge Project'24** Organised By Google Developer Student
 
 Join us in the mission to minimize food waste, foster community engagement, and make a positive impact on the world!
 
+## 🚀 Getting Started
 
-## Intro To SpoonShare Video
+> [!IMPORTANT]  
+> Our application requires Internet connection and Location permission to run properly.
 
-[![Intro To SpoonShare](https://github.com/shuence/SpoonShare/assets/65482186/927266f1-8703-4dac-9bb6-922e5844458e)
-](https://www.youtube.com/watch?v=D-5eatCAxwU&ab_channel=Shuence)
+1. Download & Install : [Get It From Play Store](https://play.google.com/store/apps/details?id=com.spoonsharemeal)
 
+2. Run the downloaded file on your adnroid phone! 
 
-Short but detailed introduction to SpoonShare. Click on the image above to watch the video.
+## ⚠️ Initial Survey and Problem Statement Research
 
+<table style="width: 100%;">
+  <tr>
+    <td>
+      <img src="https://i.postimg.cc/638rnwM4/image.png" alt="Image 1" style="width: 80%; text-align:center">
+      <p> </p>
+      <p>📌 In our initial survey and deep problem analysis, we uncovered staggering global statistics: 2.4 billion people face food insecurity, with projections of 600 million more by 2030.  </p>
+       <p>📝 Our findings fueled the creation of Spoon Share, a platform connecting surplus food donors with those in need, combating hunger and food waste on a global scale..</p>
+    </td>
+  </tr>
+  </table>
+
+## 📊 Public Opinion
+
+#### 1500+ students from 4️⃣colleges and peoples surveyed across the city. 
+
+<hr>
+
+<table style="width: 100%;">
+  <tr>
+    <p>➡️ Overall, our research highlighted the urgency and importance of addressing food insecurity, and Spoon Share emerged as a solution-driven platform to make a meaningful impact on this critical issue. </p>
+    <p>➡️ We also conducted a survey to get community response for some sought after features listed below.</p>
+    <td>
+      <img src="https://i.postimg.cc/d1n0sT28/image.png" alt="Image 1" style="width: 100%;">
+    </td>
+    <td>
+      <img src="https://i.postimg.cc/vHxGjKN7/image.png" alt="Image 8" style="width: 100%;">
+    </td>
+  </tr>
+  <tr> 
+    <td style="text-align: center;">
+      <img src="https://i.postimg.cc/jjx0s3ZF/image.png" alt="Image 2" style="width: 100%;">  
+    </td>
+    <td style="text-align: center;">
+      <img src="https://i.postimg.cc/xd1fsdD8/image.png" alt="Image 3" style="width: 100%;">
+    </td>
+  </tr>
+  <tr>
+   <td style="text-align: center;">
+      <img src="https://i.postimg.cc/fRwDLbbC/image.png" alt="Image 3" style="width: 100%;">
+    </td>
+  </tr>
+</table>
+
+<hr>
 
 ## Setup
 
@@ -54,54 +126,34 @@ cd SpoonShare
 flutter pub get
 flutter run
 ```
-## Resources
 
-- [Flutter Docs](https://docs.flutter.dev/)
-- [Figma](https://help.figma.com/hc/en-us)
-- [Firebase Docs](https://firebase.google.com/docs)
-  
-## Application Overview
 
-<table style="width: 100%;">
-<h3>Basic Screens</h3>
-  <tr>
-    <td style="text-align: center;">
-      <img src="https://spoonshare.vercel.app/images/21.png" alt="Image 1" style="width: 100%;">
-      <p>Splash Screen</p>
-    </td>
-    <td style="text-align: center;">
-      <img src="https://spoonshare.vercel.app/images/22.png" alt="Image 8" style="width: 80%;">
-      <p>Onbording Screen</p>
-    </td>
-    <td style="text-align: center;">
-      <img src="https://spoonshare.vercel.app/images/29.png" alt="Image 2" style="width: 100%;">
-      <p>SignUp Screen</p>
-    </td>
-    <td style="text-align: center;">
-      <img src="https://spoonshare.vercel.app/images/23.png" alt="Image 3" style="width: 100%;">
-      <p>SignIn Screen</p>
-    </td>
-  </tr>
-</table>
 
-# Screenshots
-<pre>
-<img src="https://github.com/shuence/SpoonShare/assets/65482186/a9f9423f-6843-445d-8233-4be9e731cbe4" width="250"> <img
-src="https://github.com/shuence/SpoonShare/assets/65482186/e171eb6c-41d5-4d54-a254-c61838fc18e5" width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/b6560714-09a7-4673-aeb1-c9ed7e59d1c0"  width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/15307620-b76f-4423-a2fc-ac6a08e91abe" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/840be77d-0420-4647-b9d9-ab2c47c602f7" width="250">
-<img src="https://github.com/shuence/SpoonShare/assets/65482186/8ff0b600-2bfc-4ebd-bd90-299b5a07b2f8" width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/d1bc11d6-e72e-497a-9b27-32c4c1962836" width="250"> <img
-src="https://github.com/shuence/SpoonShare/assets/65482186/70cd7833-fce3-438a-a71b-967c06fe8035" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/f45e4157-969c-4f73-b048-f5cd6df87f71" width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/8d4585f0-09ac-41a1-be2f-d6e93d4ed592" width="250"> 
-<img src="https://github.com/shuence/SpoonShare/assets/65482186/ba41649b-6726-44fb-a6e0-96781f63e2b1" width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/be11e412-6fa8-48a6-a8ce-5b7d1b7a8fd6" width="250"> <img
-src="https://github.com/shuence/SpoonShare/assets/65482186/7c65f0db-8744-43d4-b7a6-13d9ef60ee3e" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/a3d8c217-379c-4f8b-bf17-51b45f8bd4bb" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/ed3f38a2-b663-4df0-8762-07fc1440a21b" width="250"> 
-<img src="https://github.com/shuence/SpoonShare/assets/65482186/8e463244-f8b9-4b03-8c7a-a9d028d2a549" width="250"> <img
-src="https://github.com/shuence/SpoonShare/assets/65482186/122679cf-0f07-4344-b65a-dcc473e2dd21" width="250"> <img 
-src="https://github.com/shuence/SpoonShare/assets/65482186/5cd3781a-645d-45c1-a54a-0b58fbc9e605" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/c6cc77a5-232e-4626-a4cb-f6af9229ab81" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/8a3089ef-5144-4089-93fb-20cb9f7279c5" width="250"> 
-<img src="https://github.com/shuence/SpoonShare/assets/65482186/a0ff1d91-e9f7-4768-a91d-24f8d510962a" width="250"> <img src="https://github.com/shuence/SpoonShare/assets/65482186/ba441ec8-78ec-43d5-8829-a3b8273370c5" width="250"> 
-</pre>
+## 🛳 User Guide
+
+### Walkthrough
+
+| Screen                                                                                                                                          | Guide                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://spoonshare.vercel.app/images/21.png" width="250"/> | *Splash Screen:* Displays the Spoon Share logo upon app launch. <br>  |
+| <img src="https://spoonshare.vercel.app/images/22.png" width="250"/> | *Onboarding Screen:* Allows users to create a new account or log in if they already have one. <br>  |
+| <img src="https://spoonshare.vercel.app/images/29.png" width="250"/> | *Signup Screen:* Offers the option to create an account manually or swiftly continue using Google credentials. <br>  |
+| <img src="https://spoonshare.vercel.app/images/23.png" width="250"/> | *Signin Screen:* Offers the option to login via email manually or swiftly continue using Google credentials. <br>  ||
+| <img src="https://i.ibb.co/ZdZKx8M/forgot.png" width="250"/> | *Forgot Password Screen:* User can Request Forgot password link incase they forgot password <br>  |
+| <img src="https://spoonshare.vercel.app/images/24.png" width="250"/> | *Home Screen:* Lists nearby locations within a 30km radius where free food is available. <br>  |
+| <img src="https://i.postimg.cc/4nkk2wt1/fooddetails.png" width="250"/> |*Food Detials Card:* Provides detailed information about each location, including timings, food types, and a map for location details.<br>  |
+| <img src="https://spoonshare.vercel.app/images/Black%20bezzel%20(5).png" width="250"/> | *Interactive Map Screen:* Displays various locations with free food availability, marked distinctly by our unique icon for easy identification. <br>  |
+| <img src="https://spoonshare.vercel.app/images/31.png" width="250"/> | *Donate Screen:* Enables individuals to donate food, share locations of free food availability, and Share nearby water facilities. <br>  |
+| <img src="https://i.postimg.cc/Zbfht5jS/freefood.png" width="250"/> | *Share Free Food Screen:* Individuals can Share Free Food Available like Public Feasts, Marriage Nearby By Simply filling this form. <br>  |
+| <img src="https://spoonshare.vercel.app/images/donation.png" width="250"/> | *Donate Food Screen:* Individuals can Donate Surplus Food Available from functions like Public Feasts, Marriage or also from there homes By Simply filling this form. <br>  |
+| <img src="https://i.postimg.cc/xjhD8pWp/freewater.png" width="250"/> | *Share Water Facilities Screen:* Individuals can Share Free Water Facilities Available on like Public Places like Railway Station, Bus Stands or simply by road By Simply filling this form. <br>  |
+| <img src="https://i.postimg.cc/YC1JX1dp/join.png" width="250"/> |*Join Us Page:* Allows users to volunteer for community work or join as an NGO for collaborative efforts. <br>  |
+| <img src="https://i.postimg.cc/431dw6Rt/Volunteer.png" width="250"/> | *Volunteer Form Screen:* Individuals can Join the SpoonShare Initiative by Filling Volunteer Form. <br>  |
+| <img src="https://i.postimg.cc/vmF30DKs/NGO-FORM-PAGE.png" width="250"/> | *NGO Form Screen:* NGOs can Join the SpoonShare Initiative by Filling NGO Form. <br>  |
+| <img src="https://i.postimg.cc/CL0GxNLT/Black-bezzel-3.png" width="250"/> | *Admin Dashboard Screen:* Admin can Manage all the operations like verifying and NGO's Management. <br>  |
+| <img src="https://i.postimg.cc/4xNpzx9W/Black-bezzel-2.png" width="250"/> | *Verify Free Food/Donate Food:* Admin can Ensures authenticity by verifying food listings before they appear on the app. <br>  |
+| <img src="https://i.postimg.cc/j5xgfXv1/Black-bezzel.png" width="250"/> | *NGO Manage Screen:* Admin Can Manage NGO Informations. <br>  |
+
 
 ## Key Features:
 1. **Surplus Food Map:**
@@ -182,6 +234,14 @@ src="https://github.com/shuence/SpoonShare/assets/65482186/5cd3781a-645d-45c1-a5
 ### Community Building and Partnerships
 - Robust community engagement strategy for user interaction.
 - Partnerships with NGOs, local businesses, and institutions for expanded impact.
+
+
+## Resources
+
+- [Flutter Docs](https://docs.flutter.dev/)
+- [Figma](https://help.figma.com/hc/en-us)
+- [Firebase Docs](https://firebase.google.com/docs)
+
 
 # Hi, We are InnovisionSquad! 👋
 
