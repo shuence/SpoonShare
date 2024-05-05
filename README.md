@@ -156,32 +156,17 @@ flutter run
 
 
 ## Key Features:
-1. **Surplus Food Map:**
-   - Visualize surplus food locations on an interactive map, facilitating easy navigation and access to available resources within a 30km radius.
-2. **User-Friendly Interface:**
-   - Intuitive design ensures a seamless experience for donors, recipients, volunteers, and NGOs, promoting accessibility and usability for all users.
-3. **Real-Time Updates:**
-   - Stay informed with instant notifications about surplus food availability, ensuring timely distribution and reducing food wastage.
-4. **Volunteer Matching:**
-   - Connect volunteers with surplus food distribution opportunities tailored to their preferences and availability, fostering community involvement and support.
-5. **Quality and Safety Standards Verification:**
-   - Implement rigorous guidelines to verify the quality and safety of donated food, ensuring compliance with standards and regulations.
-6. **Collaboration with Local Governments and NGOs:**
-   - Forge partnerships with local authorities and non-governmental organizations (NGOs) to streamline operations, leverage resources, and adhere to regulatory requirements effectively.
-
-## Additional Features:
-- **Food Sharing:** 
-  - Facilitate the sharing of surplus food among community members, encouraging generosity and reducing food waste.
-- **Food Donation:**
-  - Enable users to donate surplus food to those in need, promoting compassion and addressing food insecurity issues.
-- **Food Recycling:**
-  - Promote sustainable practices by facilitating the recycling of surplus food, minimizing environmental impact and promoting resource efficiency.
-- **Admin Dashboard:**
-  - Empower administrators to verify shared, donated, and recycled food, ensuring adherence to quality standards and regulatory compliance.
-- **NGO Dashboard:**
-  - Provide NGOs with a dedicated platform to verify volunteer activities, donated food, and shared resources, enhancing transparency and accountability.
-- **User Roles:**
-  - Users can join as volunteers or NGOs, contributing to community welfare and fostering a sense of social responsibility.
+- Visualize surplus food locations on an interactive map within a 30km radius.
+- Intuitive design for donors, recipients, volunteers, and NGOs.
+- Instant notifications for surplus food availability.
+- Connect volunteers with distribution opportunities.
+- Rigorous guidelines to verify donated food quality and safety.
+- Partnerships with authorities and organizations for effective operations.
+- Food Sharing, Donation, and Recycling options.
+- Verification of shared, donated, and recycled food.
+- Monitoring volunteer activities and resources.
+- Volunteers and NGOs contributing to community welfare.
+- Enlistment of nearby free water facilities on the interactive map for user convenience.
 
 ## Tech Stack
 **Technologies involved/used:**
@@ -199,42 +184,25 @@ flutter run
 
 # SpoonShare Project Implementation Overview
 
-### Technology Stack
-- Flutter: Cross-platform app development.
-- Firebase: Real-time updates, user authentication, and data storage.
-- Google Maps API: Efficient navigation.
+1. **Technology Stack**: Utilizing Flutter, Firebase, and Google Maps API for efficient cross-platform app development with real-time updates and user-friendly navigation.
 
-### User Interface (UI) Design
-- Figma: Collaborative UI/UX design.
-- User-friendly interface with clear "Donate Food" and "Find Food" buttons.
+2. **User Interface (UI) Design**: Collaborative design using Figma to create a user-friendly interface featuring prominent "Donate Food" buttons.
 
-### Educational Resources
-- Collaboration with NGOs to provide educational content on food waste.
+3. **Educational Resources**: Providing educational content on food waste in collaboration with NGOs.
 
-### Volunteer Matching
-- Feature to connect willing volunteers with NGOs and events.
+4. **Volunteer Matching**: Connecting volunteers with NGOs and events through a dedicated feature.
 
-### Quality and Safety Standards Verification
-- Establishment of guidelines for donor verification.
+5. **Quality and Safety Standards**: Implementing guidelines for donor verification to ensure quality and safety.
 
-### Feedback and Ratings System
-- System to maintain transparency and encourage user participation.
+6. **Feedback and Ratings System**: Transparent system encouraging user participation and feedback.
 
-### Collaboration with Local Governments
-- Partnerships with local governments for legal compliance.
+7. **Collaboration with Local Governments**: Partnering with local governments to ensure legal compliance and community support.
 
-### Marketing and Awareness
-- Utilization of social media platforms for promotional campaigns.
-- Collaboration with influencers and organizations for a wider reach.
+8. **Marketing and Awareness**: Leveraging social media, influencers, and organizational collaborations for effective promotional campaigns.
 
-### Post-Launch Optimization
-- Regular analysis of user data for improvements and enhancements.
-- Community feedback encouraged for continuous improvement.
+9. **Post-Launch Optimization**: Analyzing user data to drive continuous improvements and enhancements based on community feedback.
 
-### Community Building and Partnerships
-- Robust community engagement strategy for user interaction.
-- Partnerships with NGOs, local businesses, and institutions for expanded impact.
-
+10. **Community Building and Partnerships**: Engaging users through community initiatives and partnerships with NGOs, local businesses, and institutions for expanded impact.
 
 ## Resources
 
@@ -243,18 +211,14 @@ flutter run
 - [Firebase Docs](https://firebase.google.com/docs)
 
 
-# Hi, We are InnovisionSquad! 👋
-
-
-## 🚀 About us
-
+# Hi, We are InnovisionSquad
+## 🤝 Contributors
 We are a team from Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar and Core Team Members of [GDSC DIEMS](https://gdsc.community.dev/deogiri-institute-of-engineering-and-management-studies-aurangabad/)
 
-- Sanika Chavan - [Sanika](https://linkedin.com/in/sanika-chavan-52457b236/)
-- Krishna Dnyaneshwar Aute - [Krishna](https://www.linkedin.com/in/krishna-aute-195b2b135/)
-- Shubham Vishnu Pitekar - [Shuence](https://shuence.com)
-- Mohammed Rehan - [Rehan](https://www.linkedin.com/in/mdrehan15/)
-
-## Happy coding 💯
+| [Sanika Chavan ](https://linkedin.com/in/sanika-chavan-52457b236/)| [Shubham Pitekar](https://github.com/shuence)| [Krishna Aute](https://www.linkedin.com/in/krishna-aute-195b2b135/)| [Mohammed Rehan](https://www.linkedin.com/in/mdrehan15/)|
+| ----------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/116996971?v=4"> | <img src="https://avatars.githubusercontent.com/u/65482186?v=4"> | <img src="https://i.postimg.cc/zvYf8bGj/image.jpg"> | <img src="https://i.postimg.cc/bvPLDLFc/image.jpg"> |
+| Project Manager| Flutter Developer| Firebase/PR | UI/UX Designer                              
+## Happy Innovating 💯
 
 Made with love from [InnovsionSquad]() ❤️
