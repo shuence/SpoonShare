@@ -33,7 +33,11 @@ Spoon Share is an Android app that fights food insecurity by connecting surplus 
  - [Global Top 100 | Google Solution Challenge](https://www.linkedin.com/posts/sanika-chavan-52457b236_in-top-100-teams-across-the-world-activity-7182764356382724096-2ID3?utm_source=share&utm_medium=member_desktop)
 - [Regional BootCamp - Mumbai | Google Solution Challenge](https://www.linkedin.com/posts/shuence_spoonshare-regionalbootcamp-mumbai-activity-7162722028817530882-f9iL?utm_source=share&utm_medium=member_desktop)
 - **Featured It The Lokmat Times**
-[![Lokmat](https://s3.ap-south-1.amazonaws.com/epaper.lokmat/eNewspaper/News/LOKTIME/LTCP/2024/04/18/ArticleImages/66204ae673445.jpg)](https://epaper.lokmat.com/articlepage.php?articleid=LOKTIME_LTCP_20240418_4_5)
+<p align="center">
+  <a href="https://epaper.lokmat.com/articlepage.php?articleid=LOKTIME_LTCP_20240418_4_5" target="_blank">
+    <img src="https://s3.ap-south-1.amazonaws.com/epaper.lokmat/eNewspaper/News/LOKTIME/LTCP/2024/04/18/ArticleImages/66204ae673445.jpg" alt="Lokmat Times Feature" width="70%">
+  </a>
+</p>
 
 ## Latest Version - v1.4.0
 
@@ -133,26 +137,110 @@ flutter run
 
 ### Walkthrough
 
-| Screen                                                                                                                                          | Guide                                                                               |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://spoonshare.vercel.app/images/21.png" width="250"/> | *Splash Screen:* Displays the Spoon Share logo upon app launch. <br>  |
-| <img src="https://spoonshare.vercel.app/images/22.png" width="250"/> | *Onboarding Screen:* Allows users to create a new account or log in if they already have one. <br>  |
-| <img src="https://spoonshare.vercel.app/images/29.png" width="250"/> | *Signup Screen:* Offers the option to create an account manually or swiftly continue using Google credentials. <br>  |
-| <img src="https://spoonshare.vercel.app/images/23.png" width="250"/> | *Signin Screen:* Offers the option to login via email manually or swiftly continue using Google credentials. <br>  ||
-| <img src="https://i.ibb.co/ZdZKx8M/forgot.png" width="250"/> | *Forgot Password Screen:* User can Request Forgot password link incase they forgot password <br>  |
-| <img src="https://spoonshare.vercel.app/images/24.png" width="250"/> | *Home Screen:* Lists nearby locations within a 30km radius where free food is available. <br>  |
-| <img src="https://i.postimg.cc/4nkk2wt1/fooddetails.png" width="250"/> |*Food Detials Card:* Provides detailed information about each location, including timings, food types, and a map for location details.<br>  |
-| <img src="https://spoonshare.vercel.app/images/Black%20bezzel%20(5).png" width="250"/> | *Interactive Map Screen:* Displays various locations with free food availability, marked distinctly by our unique icon for easy identification. <br>  |
-| <img src="https://spoonshare.vercel.app/images/31.png" width="250"/> | *Donate Screen:* Enables individuals to donate food, share locations of free food availability, and Share nearby water facilities. <br>  |
-| <img src="https://i.postimg.cc/Zbfht5jS/freefood.png" width="250"/> | *Share Free Food Screen:* Individuals can Share Free Food Available like Public Feasts, Marriage Nearby By Simply filling this form. <br>  |
-| <img src="https://spoonshare.vercel.app/images/donation.png" width="250"/> | *Donate Food Screen:* Individuals can Donate Surplus Food Available from functions like Public Feasts, Marriage or also from there homes By Simply filling this form. <br>  |
-| <img src="https://i.postimg.cc/xjhD8pWp/freewater.png" width="250"/> | *Share Water Facilities Screen:* Individuals can Share Free Water Facilities Available on like Public Places like Railway Station, Bus Stands or simply by road By Simply filling this form. <br>  |
-| <img src="https://i.postimg.cc/YC1JX1dp/join.png" width="250"/> |*Join Us Page:* Allows users to volunteer for community work or join as an NGO for collaborative efforts. <br>  |
-| <img src="https://i.postimg.cc/431dw6Rt/Volunteer.png" width="250"/> | *Volunteer Form Screen:* Individuals can Join the SpoonShare Initiative by Filling Volunteer Form. <br>  |
-| <img src="https://i.postimg.cc/vmF30DKs/NGO-FORM-PAGE.png" width="250"/> | *NGO Form Screen:* NGOs can Join the SpoonShare Initiative by Filling NGO Form. <br>  |
-| <img src="https://i.postimg.cc/CL0GxNLT/Black-bezzel-3.png" width="250"/> | *Admin Dashboard Screen:* Admin can Manage all the operations like verifying and NGO's Management. <br>  |
-| <img src="https://i.postimg.cc/4xNpzx9W/Black-bezzel-2.png" width="250"/> | *Verify Free Food/Donate Food:* Admin can Ensures authenticity by verifying food listings before they appear on the app. <br>  |
-| <img src="https://i.postimg.cc/j5xgfXv1/Black-bezzel.png" width="250"/> | *NGO Manage Screen:* Admin Can Manage NGO Informations. <br>  |
+<table style="width: 100%;">
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/21.png" width="120"/><br>
+      <b>Splash Screen</b><br>
+      Displays the Spoon Share logo upon app launch.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/22.png" width="120"/><br>
+      <b>Onboarding Screen</b><br>
+      Allows users to create a new account or log in if they already have one.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/29.png" width="120"/><br>
+      <b>Signup Screen</b><br>
+      Offers the option to create an account manually or swiftly continue using Google credentials.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/23.png" width="120"/><br>
+      <b>Signin Screen</b><br>
+      Offers the option to log in via email manually or swiftly continue using Google credentials.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://i.ibb.co/ZdZKx8M/forgot.png" width="120"/><br>
+      <b>Forgot Password Screen</b><br>
+      User can request a forgot password link in case they forgot their password.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/24.png" width="120"/><br>
+      <b>Home Screen</b><br>
+      Lists nearby locations within a 30km radius where free food is available.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/4nkk2wt1/fooddetails.png" width="120"/><br>
+      <b>Food Details Card</b><br>
+      Provides detailed information about each location, including timings, food types, and map for location details.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/Black%20bezzel%20(5).png" width="120"/><br>
+      <b>Interactive Map Screen</b><br>
+      Displays various locations with free food availability, marked distinctly by our unique icon for easy identification.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/31.png" width="120"/><br>
+      <b>Donate Screen</b><br>
+      Enables individuals to donate food, share locations of free food availability, and share nearby water facilities.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/Zbfht5jS/freefood.png" width="120"/><br>
+      <b>Share Free Food Screen</b><br>
+      Individuals can share available free food locations like public feasts or nearby events by filling out a form.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://spoonshare.vercel.app/images/donation.png" width="120"/><br>
+      <b>Donate Food Screen</b><br>
+      Allows individuals to donate surplus food from functions like public feasts or home by filling out a form.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/xjhD8pWp/freewater.png" width="120"/><br>
+      <b>Share Water Facilities Screen</b><br>
+      Individuals can share free water facilities available at public places like railway stations or bus stands by filling out a form.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/YC1JX1dp/join.png" width="120"/><br>
+      <b>Join Us Page</b><br>
+      Allows users to volunteer for community work or join as an NGO for collaborative efforts.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/431dw6Rt/Volunteer.png" width="120"/><br>
+      <b>Volunteer Form Screen</b><br>
+      Individuals can join the SpoonShare initiative by filling out a volunteer form.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/vmF30DKs/NGO-FORM-PAGE.png" width="120"/><br>
+      <b>NGO Form Screen</b><br>
+      NGOs can join the SpoonShare initiative by filling out an NGO form.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/CL0GxNLT/Black-bezzel-3.png" width="120"/><br>
+      <b>Admin Dashboard Screen</b><br>
+      Admin can manage all operations, including verifying and managing NGOs.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/4xNpzx9W/Black-bezzel-2.png" width="120"/><br>
+      <b>Verify Free Food/Donate Food</b><br>
+      Admin ensures authenticity by verifying food listings before they appear on the app.
+    </td>
+    <td align="center" width="25%">
+      <img src="https://i.postimg.cc/j5xgfXv1/Black-bezzel.png" width="120"/><br>
+      <b>NGO Manage Screen</b><br>
+      Admin can manage NGO information within the app.
+    </td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+
 
 
 ## Key Features:
