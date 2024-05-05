@@ -301,7 +301,7 @@ flutter run
 ## Tech Stack
 **Technologies involved/used:**
 
-![Archtectural-diagram.png](https://i.postimg.cc/RVxZ6DzZ/Archtectural-diagram.png)
+![Archtectural-diagram.png](https://i.postimg.cc/x1Xf3tBh/TECH-STACK.png)
 
 # SpoonShare Project Implementation Overview
 
