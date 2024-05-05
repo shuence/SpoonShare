@@ -4,24 +4,36 @@
 
 A **Google Solution Challenge Project'24** Organised By Google Developer Student Clubs Project by **Team Innovision Squad From Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar.**
 
-**Exciting News!**
-We are thrilled to announce that SpoonShare has been selected for the regional bootcamp at **Vidyalankar Institute of Technology, Mumbai**!
-[Check out the announcement on LinkedIn](https://www.linkedin.com/posts/shuence_spoonshare-regionalbootcamp-mumbai-activity-7162722028817530882-f9iL?utm_source=share&utm_medium=member_desktop)
+ ## 💯 Project Achievements
+ - [Global Top 100 | Google Solution Challenge](https://www.linkedin.com/posts/sanika-chavan-52457b236_in-top-100-teams-across-the-world-activity-7182764356382724096-2ID3?utm_source=share&utm_medium=member_desktop)
+- [Regional BootCamp - Mumbai | Google Solution Challenge](https://www.linkedin.com/posts/shuence_spoonshare-regionalbootcamp-mumbai-activity-7162722028817530882-f9iL?utm_source=share&utm_medium=member_desktop)
 
-## Live Preview
 
-**Download the APK:**
+## Latest Version - v1.5.0
 
-- [SpoonShare APK](https://github.com/shuence/SpoonShare/releases/download/v.1.1.0/SpoonShare.apk)
-
-**Experience SpoonShare firsthand by visiting the deployed version:**
-
-- [SpoonShare](https://spoonshare-meals.web.app/)
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/shuence/SpoonShare/releases/download/v.1.5.0/SpoonShare.apk">
+        <img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Github" width="200">
+      </a>
+    </td>
+    <td>
+      <a href="https://play.google.com/store/apps/details?id=com.spoonsharemeal">
+        <img src="https://i.imgur.com/9p4oJQG.png" alt="Github" width="200">
+      </a>
+    </td>
+       <td>
+      <a href="https://media.giphy.com/media/iHD88spVFkL7mZakwa/giphy.gif">
+        <img src="https://imgur.com/91mkzE2.png" alt="Github" width="200">
+      </a>
+    </td>
+  </tr>
+</table>
 
 
 Join us in the mission to minimize food waste, foster community engagement, and make a positive impact on the world!
 
-# SpoonShare Project
 
 ## Intro To SpoonShare Video
 
@@ -31,20 +43,6 @@ Join us in the mission to minimize food waste, foster community engagement, and 
 
 Short but detailed introduction to SpoonShare. Click on the image above to watch the video.
 
-## Getting Started
-Before running the project, make sure you have the necessary files downloaded:
-1. **firebase_options.dart**: Located in the `lib` folder.
-2. **google-services.json**: Located in the `android/app/` directory.
-
-You can download these files from the following links:
-- [firebase_options.dart](https://drive.google.com/drive/folders/16JjJ-FC_-CMKyd1OO5Nejc1W44c6fM9y?usp=drive_link)
-- [google-services.json](https://drive.google.com/drive/folders/16JjJ-FC_-CMKyd1OO5Nejc1W44c6fM9y?usp=drive_link)
-
-## Installation
-To install and run the project, follow these steps:
-1. Clone this repository to your local machine.
-2. Place the downloaded `firebase_options.dart` file in the `lib` folder.
-3. Place the downloaded `google-services.json` file in the `android/app/` directory.
 
 ## Setup
 
@@ -62,6 +60,30 @@ flutter run
 - [Figma](https://help.figma.com/hc/en-us)
 - [Firebase Docs](https://firebase.google.com/docs)
   
+## Application Overview
+
+<table style="width: 100%;">
+<h3>Basic Screens</h3>
+  <tr>
+    <td style="text-align: center;">
+      <img src="https://spoonshare.vercel.app/images/21.png" alt="Image 1" style="width: 100%;">
+      <p>Splash Screen</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://spoonshare.vercel.app/images/22.png" alt="Image 8" style="width: 80%;">
+      <p>Onbording Screen</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://spoonshare.vercel.app/images/29.png" alt="Image 2" style="width: 100%;">
+      <p>SignUp Screen</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://spoonshare.vercel.app/images/23.png" alt="Image 3" style="width: 100%;">
+      <p>SignIn Screen</p>
+    </td>
+  </tr>
+</table>
+
 # Screenshots
 <pre>
 <img src="https://github.com/shuence/SpoonShare/assets/65482186/a9f9423f-6843-445d-8233-4be9e731cbe4" width="250"> <img
