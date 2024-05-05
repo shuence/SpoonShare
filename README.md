@@ -170,17 +170,8 @@ flutter run
 
 ## Tech Stack
 **Technologies involved/used:**
-- **Flutter:** Google's UI toolkit for cross-platform app development.
-- **Firebase:** Google's platform for authentication, database, and cloud services.
-- **Google Maps API:** Integrates dynamic maps and location-based services.
-- **Google Cloud:** Offers scalable cloud services and machine learning.
-- **Android Studio:** Official IDE for Android development.
-- **Web (HTML, CSS, JS):** Standard web technologies for UI.
-- **Google Maps:** Web mapping service for interactive maps.
-- **Google API:** Collection of APIs for diverse services.
-- **Google Sign-In:** Authentication using Google credentials.
-- **Google Map Places API:** For address auto-complete and showing location on map.
 
+![Archtectural-diagram.png](https://i.postimg.cc/RVxZ6DzZ/Archtectural-diagram.png)
 
 # SpoonShare Project Implementation Overview
 
@@ -215,7 +206,7 @@ flutter run
 ## 🤝 Contributors
 We are a team from Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar and Core Team Members of [GDSC DIEMS](https://gdsc.community.dev/deogiri-institute-of-engineering-and-management-studies-aurangabad/)
 
-| [Sanika Chavan ](https://linkedin.com/in/sanika-chavan-52457b236/)| [Shubham Pitekar](https://linkedin.com/in/shuence)| [Krishna Aute](https://www.linkedin.com/in/krishna-aute-195b2b135/)| [Mohammed Rehan](https://www.linkedin.com/in/mdrehan15/)|
+| [Sanika Chavan ](https://linkedin.com/in/sanika-chavan-52457b236/)| [Shubham Pitekar](https://github.com/shuence)| [Krishna Aute](https://www.linkedin.com/in/krishna-aute-195b2b135/)| [Mohammed Rehan](https://www.linkedin.com/in/mdrehan15/)|
 | ----------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/116996971?v=4"> | <img src="https://avatars.githubusercontent.com/u/65482186?v=4"> | <img src="https://i.postimg.cc/zvYf8bGj/image.jpg"> | <img src="https://i.postimg.cc/bvPLDLFc/image.jpg"> |
 | Project Manager| Flutter Developer| Firebase/PR | UI/UX Designer                              
