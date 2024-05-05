@@ -70,8 +70,17 @@ Join us in the mission to minimize food waste, foster community engagement, and 
 > Our application requires Internet connection and Location permission to run properly.
 
 1. Download & Install : [Get It From Play Store](https://play.google.com/store/apps/details?id=com.spoonsharemeal)
+2. Run the downloaded file on your adnroid phone!
+3. Test Credentials :
+ Email: *Spoonsharetest@123*
+ Password: *Spoonshare@123*
 
-2. Run the downloaded file on your adnroid phone! 
+
+## SpoonShare Analytics Play Store:
+ <a href="https://youtu.be/gNmQQZPwgus">
+    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="LinkedIn Badge"/>
+  </a> 	
+
 
 ## ⚠️ Initial Survey and Problem Statement Research
 
