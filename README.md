@@ -72,7 +72,7 @@ Join us in the mission to minimize food waste, foster community engagement, and 
 1. Download & Install : [Get It From Play Store](https://play.google.com/store/apps/details?id=com.spoonsharemeal)
 2. Run the downloaded file on your adnroid phone!
 3. Test Credentials :
- Email: *Spoonsharetest@123*
+ Email: *Spoonsharetest@gmail.com*
  Password: *Spoonshare@123*
 
 
