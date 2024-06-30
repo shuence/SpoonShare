@@ -30,7 +30,8 @@ Spoon Share is an Android app that fights food insecurity by connecting surplus 
 
 
  ## 💯 Project Achievements
- - [Global Top 100 | Google Solution Challenge](https://www.linkedin.com/posts/sanika-chavan-52457b236_in-top-100-teams-across-the-world-activity-7182764356382724096-2ID3?utm_source=share&utm_medium=member_desktop)
+- [Global Top 3 | Google Solution Challenge]
+- [Global Top 100 | Google Solution Challenge](https://www.linkedin.com/posts/sanika-chavan-52457b236_in-top-100-teams-across-the-world-activity-7182764356382724096-2ID3?utm_source=share&utm_medium=member_desktop)
 - [Regional BootCamp - Mumbai | Google Solution Challenge](https://www.linkedin.com/posts/shuence_spoonshare-regionalbootcamp-mumbai-activity-7162722028817530882-f9iL?utm_source=share&utm_medium=member_desktop)
 - **Featured It The Lokmat Times**
 <p align="center">
