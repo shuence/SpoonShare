@@ -1,0 +1,30 @@
+{
+    "appName": "स्पूनशेअर",
+    "tagLine": "जीवन पोषण, हास्य निर्माण!",
+
+    "onboardingIntro1": "कोणाच्या तरी जेवणात चमचा व्हा,",
+    "onboardingIntro2": "भूक नाही, आशा भरा.",
+    "createAccount": "खाते तयार करा",
+    "alreadyMember": "आधीच सदस्य आहात?",
+    "login": "लॉगिन",
+
+    "slogan1": "चळवळीत सामील व्हा!",
+    "slogan2": "जवळील अन्न शोधा किंवा आमच्यासोबत फरक घडवा!",
+    "createAccountGoogle": "गूगलसह सुरू ठेवा",
+    "fullName": "पूर्ण नाव",
+    "emailId": "ईमेल",
+    "contactNumber": "संपर्क क्रमांक",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्डची पुष्टी करा",
+    "termsAndCondition1": "साइन अप करून, तुम्ही स्पूनशेअरचे वाचले आहे आणि सहमत आहात याची पुष्टी करता",
+    "privacyPolicy": "गोपनीयता धोरण",
+    "terms": "अटी",
+    "alreadyAccount": "आधीपासूनच खाते आहे?",
+    "lognIn": "लॉगिन",
+
+    "welcome": "पुन्हा स्वागत आहे!",
+    "signInGoogle": "गूगलसह साइन इन",
+    "forgotPassword": "पासवर्ड विसरलात",
+    "dontHaveAccount": "खाते नाही?",
+    "signUp": "साइन अप"
+}
