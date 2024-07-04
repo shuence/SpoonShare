@@ -1,0 +1,31 @@
+{
+    "appName": "SpoonShare",
+    "tagLine": "Nourishing Lives, Creating Smiles!",
+
+    "onboardingIntro1": "Be the Spoon in someone's meal,",
+    "onboardingIntro2": "feed hope instead of hunger.",
+    "createAccount": "Create Account",
+    "alreadyMember": "Already a member?",
+    "login": "LOGIN",
+
+    "slogan1": "Join the movement!",
+    "slogan2": "Explore nearby food or join us to make a difference!",
+    "createAccountGoogle": "CONTINUE WITH GOOGLE",
+    "fullName": "Full Name",
+    "emailId": "Email",
+    "contactNumber": "Contact Number",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "termsAndCondition1": "By signing up, you confirm that you have read and agreed to SpoopShare’s",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "alreadyAccount": "Already have an account?",
+    "lognIn": "Log in",
+
+    "welcome": "Welcome Back!",
+    "signInGoogle": "SIGNIN WITH GOOGLE",
+    "forgotPassword": "Forgot Password",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+    
+}
