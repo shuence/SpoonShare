@@ -116,7 +116,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
         ),
         const SizedBox(height: 16),
         CustomTextField(
-            label: "Pickup Address*", controller: _addressController),
+            label: "Pickup Location*", controller: _addressController),
         if (showExpandedList)
           Container(
             height: 200,
