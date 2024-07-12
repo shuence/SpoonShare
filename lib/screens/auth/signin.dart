@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spoonshare/controllers/auth/signin_controller.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/auth/forgot_password.dart';
 import 'package:spoonshare/screens/auth/signup.dart';
 import 'package:spoonshare/screens/home/home.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
@@ -30,12 +32,15 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height + 10.h,
+            padding: MediaQuery.of(context).padding,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
@@ -57,12 +62,12 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                               decoration:
                                   const BoxDecoration(color: Color(0xFFFF9F1C)),
-                              child: const Column(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'SpoonShare',
-                                    style: TextStyle(
+                                    localization.translate(LabelKey.appName)!,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 28,
                                       fontFamily: 'Lora',
@@ -70,10 +75,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                       letterSpacing: 1.12,
                                     ),
                                   ),
-                                  SizedBox(height: 3),
+                                  const SizedBox(height: 3),
                                   Text(
-                                    'Nourishing Lives, Creating Smiles!',
-                                    style: TextStyle(
+                                    localization.translate(LabelKey.tagLine)!,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
                                       fontFamily: 'DM Sans',
@@ -93,15 +98,15 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         SizedBox(
                           width: 275,
-                          height: 73,
+                          height: 80,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Text(
-                                'Welcome Back!',
-                                style: TextStyle(
+                              Text(
+                                localization.translate(LabelKey.welcome)!,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 24,
                                   fontFamily: 'Lora',
@@ -113,7 +118,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               SizedBox(
                                 width: 275,
                                 child: Text(
-                                  'Explore nearby food or join us to make a difference!',
+                                  localization.translate(LabelKey.slogan2)!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.black
@@ -160,9 +165,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ),
                                 ),
                                 const SizedBox(width: 10),
-                                const Text(
-                                  'SIGNIN WITH GOOGLE',
-                                  style: TextStyle(
+                                 Text(
+                                  localization.translate(LabelKey.signInGoogle)!,
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 12,
                                     fontFamily: 'DM Sans',
@@ -175,7 +180,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        Container(
+                        SizedBox(
                           width: 296,
                           child: Row(
                             children: <Widget>[
@@ -211,10 +216,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           children: [
                             const SizedBox(height: 16),
                             InputField(
-                                label: 'Email', controller: _emailController),
+                                label: localization.translate(LabelKey.emailId)!, controller: _emailController),
                             const SizedBox(height: 16),
                             InputField(
-                              label: 'Password',
+                              label: localization.translate(LabelKey.password)!,
                               isPassword: true,
                               controller: _passwordController,
                               isPasswordVisible: _isPasswordVisible,
@@ -235,14 +240,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                           ForgotPasswordScreen()),
                                 );
                               },
-                              child: const Align(
+                              child: Align(
                                 alignment: Alignment.bottomRight,
                                 child: Padding(
                                   padding:
-                                      EdgeInsets.only(top: 8.0, right: 36.0),
+                                      const EdgeInsets.only(top: 8.0, right: 36.0),
                                   child: Text(
-                                    'forgot password?',
-                                    style: TextStyle(
+                                    localization.translate(LabelKey.forgotPassword)!,
+                                    style: const TextStyle(
                                       color: Colors.black54,
                                       fontSize: 15,
                                       fontFamily: 'Roboto',
@@ -265,7 +270,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'By signing in, you confirm that you have read and agreed to SpoopShare’s ',
+                                    localization.translate(LabelKey.termsAndCondition1)!,
                                     style: TextStyle(
                                       color: Colors.black.withOpacity(0.5),
                                       fontSize: 12,
@@ -274,9 +279,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                       height: 0,
                                     ),
                                   ),
-                                  const TextSpan(
-                                    text: 'Privacy Policy',
-                                    style: TextStyle(
+                                  TextSpan(
+                                    text: 
+                                    localization.translate(LabelKey.privacyPolicy),
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 11,
                                       fontFamily: 'DM Sans',
@@ -295,9 +301,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                       height: 0,
                                     ),
                                   ),
-                                  const TextSpan(
-                                    text: 'Terms',
-                                    style: TextStyle(
+                                   TextSpan(
+                                    text: localization.translate(LabelKey.terms),
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 11,
                                       fontFamily: 'DM Sans',
@@ -326,7 +332,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Don\'t have an account?',
+                                    text: localization.translate(LabelKey.dontHaveAccount),
                                     style: TextStyle(
                                       color: Colors.black
                                           .withOpacity(0.699999988079071),
@@ -346,9 +352,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                       height: 0,
                                     ),
                                   ),
-                                  const TextSpan(
-                                    text: 'Sign UP',
-                                    style: TextStyle(
+                                   TextSpan(
+                                    text: localization.translate(LabelKey.signUp),
+                                    style: const TextStyle(
                                       color: Color(0xFFFF9F1C),
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -397,13 +403,13 @@ class _SignInScreenState extends State<SignInScreen> {
                               borderRadius: BorderRadius.circular(50),
                             ),
                           ),
-                          child: const SizedBox(
+                          child:  SizedBox(
                             width: 250,
                             height: 45,
                             child: Center(
                               child: Text(
-                                'Log In',
-                                style: TextStyle(
+                                localization.translate(LabelKey.lognIn)!,
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontFamily: 'Roboto',

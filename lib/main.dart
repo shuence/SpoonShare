@@ -1,14 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spoonshare/firebase_options.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
+import 'package:spoonshare/services/change_notifier.dart';
 import 'package:spoonshare/services/notifications_services.dart';
 import 'package:spoonshare/splash_screen.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:in_app_update/in_app_update.dart';
 import 'common_blocs/common_blocs.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -22,46 +23,14 @@ void main() async {
   await SharedPreferences.getInstance();
 
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(),
+    ChangeNotifierProvider(
+      create: (_) => LanguageProvider(),
+      child: const MyApp(),
     ),
   );
 }
-
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late AppUpdateInfo _updateInfo;
-
-  @override
-  void initState() {
-    super.initState();
-    _checkForUpdate();
-  }
-
-  Future<void> _checkForUpdate() async {
-    try {
-      final info = await InAppUpdate.checkForUpdate();
-      setState(() {
-        _updateInfo = info;
-      });
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
-  void _showSnack(String text) {
-    if (navigatorKey.currentState != null) {
-      ScaffoldMessenger.of(navigatorKey.currentState!.context)
-          .showSnackBar(SnackBar(content: Text(text)));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +50,28 @@ class _MyAppState extends State<MyApp> {
             useMaterial3: true,
           ),
           home: const SplashScreen(),
+          locale: Provider.of<LanguageProvider>(context).currentLocale,
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('mr', 'MR'),
+            Locale('hi', 'HI'),
+            Locale('ka', 'KA'),
+          ],
+          localizationsDelegates: const [
+            AppLocalization.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale!.languageCode &&
+                  supportedLocale.countryCode == locale.countryCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
         ),
       ),
     );

@@ -1,19 +1,26 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/screens/auth/signin.dart';
 import 'package:spoonshare/screens/auth/signup.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,         
+            height: MediaQuery.of(context).size.height,      
+            padding: MediaQuery.of(context).padding,   
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -22,12 +29,12 @@ class Onboarding extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: 160.h,
                   decoration: const BoxDecoration(color: Color(0xFFFF9F1C)),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'SpoonShare',
-                        style: TextStyle(
+                        localization.translate(LabelKey.appName)!,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 28,
                           fontFamily: 'Lora',
@@ -35,10 +42,10 @@ class Onboarding extends StatelessWidget {
                           letterSpacing: 1.12,
                         ),
                       ),
-                      SizedBox(height: 3),
+                      const SizedBox(height: 3),
                       Text(
-                        'Nourishing Lives, Creating Smiles!',
-                        style: TextStyle(
+                        localization.translate(LabelKey.tagLine)!,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
                           fontFamily: 'DM Sans',
@@ -97,20 +104,20 @@ class Onboarding extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 14),
-                const Text(
-                  'Be the Spoon in someone\'s meal,',
+                Text(
+                  localization.translate(LabelKey.onboardingIntro1)!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontFamily: 'DM Sans',
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const Text(
-                  'feed hope instead of hunger.',
+                Text(
+                  localization.translate(LabelKey.onboardingIntro2)!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontFamily: 'DM Sans',
@@ -132,9 +139,9 @@ class Onboarding extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  child: const Text(
-                    'Create Account',
-                    style: TextStyle(
+                  child: Text(
+                    localization.translate(LabelKey.createAccount)!,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontFamily: 'DM Sans',
@@ -147,8 +154,8 @@ class Onboarding extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already a member?',
-                      style: TextStyle(
+                      localization.translate(LabelKey.alreadyMember)!,
+                      style:  TextStyle(
                         color: Colors.black.withOpacity(0.6),
                         fontSize: 13,
                         fontFamily: 'DM Sans',
@@ -169,9 +176,9 @@ class Onboarding extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      child: const Text(
-                        'LOGIN',
-                        style: TextStyle(
+                      child: Text(
+                        localization.translate(LabelKey.login)!,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                           fontFamily: 'DM Sans',
@@ -181,7 +188,7 @@ class Onboarding extends StatelessWidget {
                     ),
                   ],
                 ),
-            ],
+              ],
             ),
           ),
         ),

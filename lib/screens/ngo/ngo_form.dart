@@ -495,7 +495,7 @@ Future<void> _submitForm() async {
         context: context,
         barrierDismissible: false, // Prevent dialog from being dismissed
         builder: (BuildContext context) {
-          return AlertDialog(
+          return const AlertDialog(
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -516,7 +516,7 @@ Future<void> _submitForm() async {
 
       GeoPoint location = GeoPoint(lat, lng);
 
-      DocumentReference docRef = await FirebaseFirestore.instance.collection('ngos').add({
+      await FirebaseFirestore.instance.collection('ngos').add({
         'ngoName': _ngoNameController.text,
         'ngoNo': _ngoNoController.text,
         'mobileNo': _mobileNoController.text,

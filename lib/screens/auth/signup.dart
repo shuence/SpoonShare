@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/controllers/auth/signup_controller.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/auth/signin.dart';
 import 'package:spoonshare/screens/home/home.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
@@ -43,6 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    var localization = AppLocalization.of(context)!;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -50,6 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Container(
             width: ScreenUtil().screenWidth,
             height: 860.h,
+            padding: MediaQuery.of(context).padding,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Column(
@@ -68,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'SpoonShare',
+                            localization.translate(LabelKey.appName)!,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 28.sp,
@@ -79,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                           const SizedBox(height: 3),
                           Text(
-                            'Nourishing Lives, Creating Smiles!',
+                            localization.translate(LabelKey.tagLine)!,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14.sp,
@@ -102,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Join the movement!',
+                        localization.translate(LabelKey.slogan1)!,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24.sp,
@@ -115,7 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         width: 275.w,
                         child: Text(
-                          'Explore nearby food or join us to make a difference!',
+                          localization.translate(LabelKey.slogan2)!,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.8),
@@ -163,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         SizedBox(width: ScreenUtil().setWidth(10)),
                         Text(
-                          'CONTINUE WITH GOOGLE',
+                          localization.translate(LabelKey.createAccountGoogle)!,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12.sp,
@@ -177,7 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(height: ScreenUtil().setHeight(16)),
-                Container(
+                SizedBox(
                   width: ScreenUtil().setWidth(296),
                   child: Row(
                     children: <Widget>[
@@ -212,18 +216,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InputField(
-                      label: 'Full Name',
+                      label: localization.translate(LabelKey.fullName)!,
                       controller: _fullNameController,
                     ),
                     SizedBox(height: ScreenUtil().setHeight(16)),
-                    InputField(label: 'Email', controller: _emailController),
+                    InputField(label: localization.translate(LabelKey.emailId)!, controller: _emailController),
                     SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
-                        label: 'Contact Number',
+                        label: localization.translate(LabelKey.contactNumber)!,
                         controller: _contactNumberController),
                     SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
-                      label: 'Password',
+                      label: localization.translate(LabelKey.password)!,
                       isPassword: true,
                       controller: _passwordController,
                       isPasswordVisible: _isPasswordVisible,
@@ -233,7 +237,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: ScreenUtil().setHeight(16)),
                     InputField(
-                      label: 'Confirm Password',
+                      label: localization.translate(LabelKey.confirmPassword)!,
                       isPassword: true,
                       controller: _confirmPasswordController,
                       isPasswordVisible: _isConfirmPasswordVisible,
@@ -252,7 +256,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           TextSpan(
                             text:
-                                'By signing up, you confirm that you have read and agreed to SpoopShare’s ',
+                            localization.translate(LabelKey.termsAndCondition1)!,
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
                               fontSize: 11.sp,
@@ -262,7 +266,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Privacy Policy',
+                            text: localization.translate(LabelKey.privacyPolicy),
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 11.sp,
@@ -283,7 +287,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Terms',
+                            text: localization.translate(LabelKey.terms),
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 11.sp,
@@ -313,7 +317,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Already have an account?',
+                            text: localization.translate(LabelKey.alreadyAccount),
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.7),
                               fontSize: 16.sp,
@@ -333,7 +337,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Log in',
+                            text: localization.translate(LabelKey.login),
                             style: TextStyle(
                               color: const Color(0xFFFF9F1C),
                               fontSize: 16.sp,
@@ -392,7 +396,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 45.h,
                     child: Center(
                       child: Text(
-                        'Create Account',
+                        localization.translate(LabelKey.createAccount)!,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.sp,

@@ -1,0 +1,30 @@
+{
+    "appName": "स्पूनशेयर",
+    "tagLine": "जीवन को पोषण, मुस्कान बनाएं!",
+
+    "onboardingIntro1": "किसी के भोजन में चमच बनें,",
+    "onboardingIntro2": "भूख नहीं, आशा खिलाएं।",
+    "createAccount": "खाता बनाएँ",
+    "alreadyMember": "पहले से सदस्य हैं?",
+    "login": "लॉगिन",
+
+    "slogan1": "संघर्ष में शामिल हों!",
+    "slogan2": "आसपास का खाना खोजें या हमारे साथ बदलाव लाएं!",
+    "createAccountGoogle": "गूगल के साथ जारी रखें",
+    "fullName": "पूरा नाम",
+    "emailId": "ईमेल",
+    "contactNumber": "संपर्क नंबर",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "termsAndCondition1": "साइन अप करके, आप पुष्टि करते हैं कि आपने स्पूनशेयर की",
+    "privacyPolicy": "गोपनीयता नीति",
+    "terms": "शर्तें",
+    "alreadyAccount": "पहले से ही खाता है?",
+    "lognIn": "लॉग इन करें",
+
+    "welcome": "वापस स्वागत है!",
+    "signInGoogle": "गूगल के साथ साइन इन करें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "dontHaveAccount": "खाता नहीं है?",
+    "signUp": "साइन अप करें"
+}
