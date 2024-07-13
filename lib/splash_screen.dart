@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spoonshare/constants/app_images.dart';
 import 'package:spoonshare/multilingual.dart';
-import 'package:spoonshare/screens/home/home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

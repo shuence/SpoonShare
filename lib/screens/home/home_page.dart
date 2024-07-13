@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_daily_cards.dart';
 import 'package:spoonshare/widgets/foodcards/nearby_food_cards.dart';
 import 'package:spoonshare/widgets/foodcards/past_food_cards.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.name, required this.role})
@@ -19,6 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -106,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: Text(
-                      'RECENTLY UPLOADED',
+                      localization.translate(LabelKey.recentlyUploaded)!,
                       style: TextStyle(
                         color: selectedIndex == 0
                             ? Colors.black
@@ -127,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: Text(
-                      'DAILY ACTIVE',
+                      localization.translate(LabelKey.dailyActive)!,
                       style: TextStyle(
                         color: selectedIndex == 1
                             ? Colors.black
@@ -170,9 +174,9 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   margin: const EdgeInsets.only(top: 30),
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Near By Available Foods',
-                    style: TextStyle(
+                  child:  Text(
+                    localization.translate(LabelKey.nearAvailableFoods)!,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontFamily: 'Inter',
@@ -198,9 +202,9 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   margin: const EdgeInsets.only(top: 30),
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Past Free Foods',
-                    style: TextStyle(
+                  child:  Text(
+                    localization.translate(LabelKey.pastFreeFoods)!,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontFamily: 'Inter',
