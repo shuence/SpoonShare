@@ -1,10 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 
@@ -56,14 +56,11 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
         return NGO(doc['ngoName'], doc['description']);
       }).toList();
 
-      print(ngos);
-
       setState(() {
         _ngos = ngos;
       });
     } catch (error) {
       // Handle errors if any
-      print('Error fetching NGO data: $error');
     }
   }
 
@@ -99,9 +96,11 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Volunteer Form'),
+        title: Text(localization.translate(LabelKey.volunteerForm)!),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,
@@ -122,17 +121,17 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextField(
-              label: 'Full Name*',
+              label: localization.translate(LabelKey.fullName)!,
               controller: _fullNameController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Mobile No*',
+              label: localization.translate(LabelKey.mobileNo)!,
               controller: _mobileNoController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Email Address*',
+              label: localization.translate(LabelKey.emailAddress)!,
               controller: _emailController,
             ),
             const SizedBox(height: 16),
@@ -141,7 +140,9 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
                   const EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
               child: DropdownButtonFormField<String>(
                 value: _selectedGender,
-                hint: const Text('Select Gender*'),
+                hint: Text(
+                  localization.translate(LabelKey.selectGender)!,
+                ),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
@@ -164,7 +165,11 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
                     _selectedGender = newValue;
                   });
                 },
-                items: ['Male', 'Female', 'Prefer not to say']
+                items: [
+                  localization.translate(LabelKey.genderMale)!,
+                  localization.translate(LabelKey.genderfemale)!,
+                  localization.translate(LabelKey.genderNotSay)!,
+                ]
                     .map((gender) => DropdownMenuItem(
                           value: gender,
                           child: Text(gender),
@@ -178,7 +183,7 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
                   const EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
               child: TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Birthday*",
+                    labelText: localization.translate(LabelKey.birthday)!,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
                       vertical: 12.0,
@@ -219,17 +224,17 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Occupation*',
+              label: localization.translate(LabelKey.occupation)!,
               controller: _occupationController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Address*',
+              label: localization.translate(LabelKey.address)!,
               controller: _addressController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'LinkedIn/Instagram Profile Links',
+              label: localization.translate(LabelKey.linkedInInstagramLinks)!,
               controller: _linkedinController,
             ),
             const SizedBox(height: 16),
@@ -257,7 +262,7 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
                     controller: fieldTextEditingController,
                     focusNode: fieldFocusNode,
                     decoration: InputDecoration(
-                      labelText: 'Select NGO*',
+                      labelText: localization.translate(LabelKey.selectNgo)!,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16.0,
                         vertical: 12.0,
@@ -317,13 +322,13 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
           ],
         ),
       ),
-      
     );
   }
 
   Widget _buildSubmitButton() {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    var localization = AppLocalization.of(context)!;
 
     return Center(
       child: Container(
@@ -338,10 +343,10 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
           onTap: () {
             _submitForm();
           },
-          child: const Center(
+          child: Center(
             child: Text(
-              'Submit',
-              style: TextStyle(
+              localization.translate(LabelKey.submitButton)!,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Roboto',
@@ -356,6 +361,8 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
   }
 
   Future<void> _submitForm() async {
+    var localization = AppLocalization.of(context)!;
+
     if (_validateFields()) {
       try {
         // Add volunteer data to Firebase
@@ -383,15 +390,20 @@ class _VolunteerFormScreenState extends State<VolunteerFormScreen> {
         _selectedNGO = null;
 
         // Show success message
-        showSuccessSnackbar(context, 'Form submitted successfully');
+        showSuccessSnackbar(
+          context,
+          localization.translate(LabelKey.formSubmittedSuccessfully)!,
+        );
         Navigator.pop(context);
       } catch (error) {
         // Show error message if submission fails
-        showErrorSnackbar(context, 'Error submitting form: $error');
+        showErrorSnackbar(context,
+            '${localization.translate(LabelKey.errorSubmitting)!}$error');
       }
     } else {
       // Show error message indicating that all fields are required
-      showErrorSnackbar(context, 'All fields are required');
+      showErrorSnackbar(
+          context, localization.translate(LabelKey.allFieldsRequired)!);
     }
   }
 }

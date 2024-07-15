@@ -7,8 +7,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
@@ -20,6 +22,7 @@ class DonateFoodScreenContent extends StatefulWidget {
   const DonateFoodScreenContent({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _DonateFoodScreenContentState createState() =>
       _DonateFoodScreenContentState();
 }
@@ -52,9 +55,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
       setState(() {
         listForPlaces = suggestions;
       });
-    } catch (e) {
-      print("Error: $e");
-    }
+    } catch (e) {}
   }
 
   @override
@@ -84,9 +85,6 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
     double selectedLat = placeDetails['geometry']['location']['lat'];
     double selectedLng = placeDetails['geometry']['location']['lng'];
     String selectedAddress = listForPlaces[index]['description'];
-    print(selectedAddress);
-    print(selectedLat);
-    print(selectedLng);
 
     setState(() {
       _addressController.text = selectedAddress;
@@ -101,6 +99,8 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   Widget build(BuildContext context) {
     bool showExpandedList =
         _addressController.text.isNotEmpty && !_addressSelected;
+    var localization = AppLocalization.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -111,12 +111,13 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Pickup Location*',
+          label: localization.translate(LabelKey.pickupLocation)!,
           controller: _pickuplocationController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-            label: "Pickup Location*", controller: _addressController),
+            label: localization.translate(LabelKey.pickupAddress)!,
+            controller: _addressController),
         if (showExpandedList)
           Container(
             height: 200,
@@ -149,17 +150,17 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
           ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Life*',
+          label: localization.translate(LabelKey.foodLife)!,
           controller: _foodlifeController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Description*',
+          label: localization.translate(LabelKey.foodDescription)!,
           controller: _fooddescriptionController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Quantity*',
+          label: localization.translate(LabelKey.foodQuantity)!,
           controller: _foodquantityController,
         ),
         const SizedBox(height: 16),
@@ -173,6 +174,8 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   }
 
   Widget _buildDateAndTimeInputs(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -194,7 +197,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Pickup Date*',
+                    hintText: localization.translate(LabelKey.pickupDate)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -227,7 +230,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Pickup Time Till*',
+                    hintText: localization.translate(LabelKey.pickupTimeTill)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -281,6 +284,8 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   }
 
   Widget _buildImageUploadBox() {
+    var localization = AppLocalization.of(context)!;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -317,11 +322,11 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
             ),
           ),
           const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              '* Fill below details to share food',
-              style: TextStyle(
+              localization.translate(LabelKey.requiredFileds)!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
               ),
@@ -361,11 +366,13 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
+          var localization = AppLocalization.of(context)!;
+
           return Wrap(
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text('Pick from Gallery'),
+                title: Text(localization.translate(LabelKey.pickGallery)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.gallery);
@@ -373,7 +380,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Capture with Camera'),
+                title: Text(localization.translate(LabelKey.captureCamera)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.camera);
@@ -383,9 +390,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
           );
         },
       );
-    } else {
-      print('Storage or camera permission denied');
-    }
+    } else {}
   }
 
   Future<void> _pickImage(ImageSource source) async {
@@ -403,6 +408,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   Widget _buildSubmitButton() {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    var localization = AppLocalization.of(context)!;
 
     return Container(
       width: screenWidth * 0.8667,
@@ -416,10 +422,10 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
         onTap: () {
           submitFood();
         },
-        child: const Center(
+        child: Center(
           child: Text(
-            'Submit',
-            style: TextStyle(
+            localization.translate(LabelKey.submitButton)!,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: 'Roboto',
@@ -433,7 +439,7 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   }
 
   void submitFood() async {
-    // Check if all required fields are filled
+    var localization = AppLocalization.of(context)!;
     if (_imageFile == null ||
         _selectedFoodType.isEmpty ||
         _pickuplocationController.text.isEmpty ||
@@ -443,7 +449,8 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
         _foodquantityController.text.isEmpty ||
         _dateController.text.isEmpty ||
         _toTimeController.text.isEmpty) {
-      showErrorSnackbar(context, 'Please fill all required fields');
+      showErrorSnackbar(
+          context, localization.translate(LabelKey.requiredFileds)!);
       return;
     }
 
@@ -495,7 +502,6 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const ThankYouScreen()));
     } catch (e) {
-      print('Error submitting food: $e');
       showErrorSnackbar(context, 'Error submitting food');
     } finally {
       _pickuplocationController.clear();
@@ -513,14 +519,15 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
   }
 
   Widget _buildDropdownInput() {
-    return Container(
+    var localization = AppLocalization.of(context);
+    return SizedBox(
       width: double.infinity,
       height: 46,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: DropdownButtonFormField<String>(
           value: _selectedFoodType.isNotEmpty ? _selectedFoodType : null,
-          hint: const Text('Food Type'),
+          hint: Text(localization!.translate(LabelKey.foodType1)!),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16.0,
@@ -544,18 +551,18 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
               _selectedFoodType = value!;
             });
           },
-          items: const [
+          items: [
             DropdownMenuItem<String>(
               value: 'veg',
-              child: Text('Veg'),
+              child: Text(localization.translate(LabelKey.foodVeg)!),
             ),
             DropdownMenuItem<String>(
               value: 'nonveg',
-              child: Text('Non-Veg'),
+              child: Text(localization.translate(LabelKey.foodNonVeg)!),
             ),
             DropdownMenuItem<String>(
               value: 'both',
-              child: Text('Both'),
+              child: Text(localization.translate(LabelKey.foodBoth)!),
             ),
           ],
         ),
@@ -580,7 +587,6 @@ class _DonateFoodScreenContentState extends State<DonateFoodScreenContent> {
 
       return downloadURL;
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       throw Exception('Error uploading image to Firebase Storage');
     }
   }
@@ -591,35 +597,36 @@ class DonateFoodScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Donate Food'),
-          backgroundColor: const Color(0xFFFF9F1C),
-          titleTextStyle: const TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lora',
-              fontSize: 18,
-              fontWeight: FontWeight.w700),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+      appBar: AppBar(
+        title: Text(localization.translate(LabelKey.donateFoodForm)!),
+        backgroundColor: const Color(0xFFFF9F1C),
+        titleTextStyle: const TextStyle(
             color: Colors.white,
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            fontFamily: 'Lora',
+            fontSize: 18,
+            fontWeight: FontWeight.w700),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+        child: const SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              DonateFoodScreenContent(),
+            ],
           ),
         ),
-        body: Container(
-          padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
-          child: const SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20),
-                DonateFoodScreenContent(),
-              ],
-            ),
-          ),
-        ),
-);
+      ),
+    );
   }
 }

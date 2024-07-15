@@ -10,8 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/home/home.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
@@ -73,7 +75,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
         listForPlaces = suggestions;
       });
     } catch (e) {
-      print("Error: $e");
+      throw Exception(e);
     }
   }
 
@@ -98,9 +100,6 @@ class NGOFormScreenState extends State<NGOFormScreen> {
     double selectedLat = placeDetails['geometry']['location']['lat'];
     double selectedLng = placeDetails['geometry']['location']['lng'];
     String selectedAddress = listForPlaces[index]['description'];
-    print(selectedAddress);
-    print(selectedLat);
-    print(selectedLng);
 
     setState(() {
       _addressController.text = selectedAddress;
@@ -127,9 +126,10 @@ class NGOFormScreenState extends State<NGOFormScreen> {
   Widget build(BuildContext context) {
     bool showExpandedList =
         _addressController.text.isNotEmpty && !_addressSelected;
+        var localization = AppLocalization.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NGO Form'),
+        title:  Text(localization!.translate(LabelKey.ngoForm)!),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,
@@ -153,22 +153,22 @@ class NGOFormScreenState extends State<NGOFormScreen> {
             _buildImageUploadBox(),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'NGO Name*',
+              label: localization.translate(LabelKey.ngoName)!,
               controller: _ngoNameController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'NGO No*',
+              label: localization.translate(LabelKey.ngoNo)!,
               controller: _ngoNoController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Mobile No*',
+              label: localization.translate(LabelKey.ngoMobileNo)!,
               controller: _mobileNoController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Email Address*',
+              label: localization.translate(LabelKey.emailAddress)!,
               controller: _emailController,
             ),
             const SizedBox(height: 16),
@@ -177,7 +177,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
                   const EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
               child: DropdownButtonFormField<String>(
                 value: _selectedType,
-                hint: const Text('Select Type*'),
+                hint:  Text(localization.translate(LabelKey.ngoType)!),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
@@ -200,7 +200,10 @@ class NGOFormScreenState extends State<NGOFormScreen> {
                     _selectedType = newValue;
                   });
                 },
-                items: ['Food Donation', 'Charity', 'Prefer not to say']
+                items: [  localization.translate(LabelKey.ngoFoodDonation)!,
+                  localization.translate(LabelKey.ngoCharity)!,
+                  localization.translate(LabelKey.ngoNotSay)!,
+              ]
                     .map((gender) => DropdownMenuItem(
                           value: gender,
                           child: Text(gender),
@@ -214,7 +217,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
                   const EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
               child: TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Incorporation Date*",
+                    labelText: localization.translate(LabelKey.incorporationDate)!,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
                       vertical: 12.0,
@@ -255,12 +258,12 @@ class NGOFormScreenState extends State<NGOFormScreen> {
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Description*',
+              label: localization.translate(LabelKey.description)!,
               controller: _decripationController,
             ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'Address*',
+              label: localization.translate(LabelKey.address)!,
               controller: _addressController,
             ),
             if (showExpandedList)
@@ -295,14 +298,13 @@ class NGOFormScreenState extends State<NGOFormScreen> {
               ),
             const SizedBox(height: 16),
             CustomTextField(
-              label: 'LinkedIn/Instagram Profile Links*',
+              label: localization.translate(LabelKey.linkedInInstagramLinks)!,
               controller: _linkedinController,
             ),
             _buildSubmitButton()
           ],
         ),
       ),
-      
     );
   }
 
@@ -310,6 +312,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    var localization = AppLocalization.of(context);
     return Center(
       child: Container(
         width: screenWidth * 0.8667,
@@ -323,10 +326,10 @@ class NGOFormScreenState extends State<NGOFormScreen> {
           onTap: () {
             _submitForm();
           },
-          child: const Center(
+          child:  Center(
             child: Text(
-              'Submit',
-              style: TextStyle(
+              localization!.translate(LabelKey.submitButton)!,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Roboto',
@@ -341,6 +344,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
   }
 
   Widget _buildImageUploadBox() {
+    var localization = AppLocalization.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -376,11 +380,11 @@ class NGOFormScreenState extends State<NGOFormScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              '* Upload your NGO logo',
-              style: TextStyle(
+              localization!.translate(LabelKey.uploadLogo)!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
               ),
@@ -397,8 +401,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
     if (androidInfo.version.sdkInt <= 32) {
       status = await [
         Permission.storage,
-        Permission
-            .camera, 
+        Permission.camera,
       ].request();
     } else {
       status = await [
@@ -415,16 +418,16 @@ class NGOFormScreenState extends State<NGOFormScreen> {
       }
     });
 
-    if (allAccepted) {
-      // Show options for gallery or camera
+   if (allAccepted) {
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
+          var localization = AppLocalization.of(context)!;
           return Wrap(
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text('Pick from Gallery'),
+                title: Text(localization.translate(LabelKey.pickGallery)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.gallery);
@@ -432,7 +435,7 @@ class NGOFormScreenState extends State<NGOFormScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Capture with Camera'),
+                title: Text(localization.translate(LabelKey.captureCamera)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.camera);
@@ -487,103 +490,100 @@ class NGOFormScreenState extends State<NGOFormScreen> {
     }
   }
 
-Future<void> _submitForm() async {
-  if (_validateFields()) {
-    try {
-      // Show loader
-      showDialog(
-        context: context,
-        barrierDismissible: false, // Prevent dialog from being dismissed
-        builder: (BuildContext context) {
-          return const AlertDialog(
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 16),
-                Text('Submitting Form...'),
-              ],
-            ),
-          );
-        },
-      );
+  Future<void> _submitForm() async {
+    if (_validateFields()) {
+      try {
+        // Show loader
+        showDialog(
+          context: context,
+          barrierDismissible: false, // Prevent dialog from being dismissed
+          builder: (BuildContext context) {
+            return const AlertDialog(
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text('Submitting Form...'),
+                ],
+              ),
+            );
+          },
+        );
 
-      // Upload image to Firebase Storage
-      String imageUrl = await uploadImageToFirebaseStorage(
-        _imageFile,
-        _ngoNameController.text,
-      );
+        // Upload image to Firebase Storage
+        String imageUrl = await uploadImageToFirebaseStorage(
+          _imageFile,
+          _ngoNameController.text,
+        );
 
-      GeoPoint location = GeoPoint(lat, lng);
+        GeoPoint location = GeoPoint(lat, lng);
 
-      await FirebaseFirestore.instance.collection('ngos').add({
-        'ngoName': _ngoNameController.text,
-        'ngoNo': _ngoNoController.text,
-        'mobileNo': _mobileNoController.text,
-        'email': _emailController.text,
-        'ngoImage': imageUrl,
-        'type': _selectedType,
-        'incorporationDay': _selectedIncorporationDay,
-        'description': _decripationController.text,
-        'address': _addressController.text,
-        'location': location,
-        'linkedin': _linkedinController.text,
-        'verified': false,
-      });
+        await FirebaseFirestore.instance.collection('ngos').add({
+          'ngoName': _ngoNameController.text,
+          'ngoNo': _ngoNoController.text,
+          'mobileNo': _mobileNoController.text,
+          'email': _emailController.text,
+          'ngoImage': imageUrl,
+          'type': _selectedType,
+          'incorporationDay': _selectedIncorporationDay,
+          'description': _decripationController.text,
+          'address': _addressController.text,
+          'location': location,
+          'linkedin': _linkedinController.text,
+          'verified': false,
+        });
 
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString('organisation', _ngoNameController.text);
-      prefs.setString('role', 'NGO');
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('organisation', _ngoNameController.text);
+        prefs.setString('role', 'NGO');
 
-      CollectionReference users = FirebaseFirestore.instance.collection('users');
+        CollectionReference users =
+            FirebaseFirestore.instance.collection('users');
 
-      String userId = FirebaseAuth.instance.currentUser!.uid;
+        String userId = FirebaseAuth.instance.currentUser!.uid;
 
-      await users.doc(userId).update({
-        'organisation': _ngoNameController.text,
-        'role': 'NGO',
-      });
-      print(_ngoNameController.text);
+        await users.doc(userId).update({
+          'organisation': _ngoNameController.text,
+          'role': 'NGO',
+        });
 
-      _ngoNameController.clear();
-      _mobileNoController.clear();
-      _emailController.clear();
-      _decripationController.clear();
-      _addressController.clear();
-      _linkedinController.clear();
-      _selectedType = null;
-      _selectedIncorporationDay = null;
+        _ngoNameController.clear();
+        _mobileNoController.clear();
+        _emailController.clear();
+        _decripationController.clear();
+        _addressController.clear();
+        _linkedinController.clear();
+        _selectedType = null;
+        _selectedIncorporationDay = null;
 
-      // Close the dialog
-      Navigator.pop(context);
+        // Close the dialog
+        Navigator.pop(context);
 
-      showSuccessSnackbar(
-        context,
-        'Form submitted successfully. We will get back to you soon.',
-      );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
-      );
-    } catch (error) {
-      // Close the dialog
-      Navigator.pop(context);
+        showSuccessSnackbar(
+          context,
+          'Form submitted successfully. We will get back to you soon.',
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      } catch (error) {
+        // Close the dialog
+        Navigator.pop(context);
 
+        showErrorSnackbar(
+          context,
+          'Error submitting form. Please try again later.',
+        );
+      }
+    } else {
       showErrorSnackbar(
         context,
-        'Error submitting form. Please try again later.',
+        'Please fill all the required fields',
       );
     }
-  } else {
-    showErrorSnackbar(
-      context,
-      'Please fill all the required fields',
-    );
   }
 }
-
-}
-
-

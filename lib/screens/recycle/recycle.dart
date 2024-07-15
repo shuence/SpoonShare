@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/recycle/pickup_food.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 
 class RecycleScreen extends StatelessWidget {
   const RecycleScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context);
     return Scaffold(
       body: Container(
         padding: MediaQuery.of(context).padding +
@@ -17,7 +20,7 @@ class RecycleScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'RECYCLE FOOD',
+              localization!.translate(LabelKey.recycleeFood)!,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.sp,
@@ -40,7 +43,7 @@ class RecycleScreen extends StatelessWidget {
             ),
             SizedBox(height: 48.h),
             Text(
-              'The Most Reliable & Efficient ',
+              localization.translate(LabelKey.recycleSolgan1)!,
               style: TextStyle(
                 color: Colors.black.withOpacity(0.5),
                 fontSize: 15.sp,
@@ -51,7 +54,7 @@ class RecycleScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              'Waste Disposal Service',
+              localization.translate(LabelKey.recycleSolgan2)!,
               style: TextStyle(
                 color: const Color(0xFF00BE1E),
                 fontSize: 20.sp,
@@ -67,12 +70,12 @@ class RecycleScreen extends StatelessWidget {
               height: 179.h,
             ),
             SizedBox(height: 48.h),
-            const SizedBox(
+             SizedBox(
               width: 284,
               child: Text(
-                'we are committed to providing you with the best waste disposal service. We are reliable, efficient and always on time.',
+                localization.translate(LabelKey.recycleSlogan3)!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
                   fontFamily: 'DM Sans',
@@ -102,7 +105,7 @@ class RecycleScreen extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'REQUEST PICKUP',
+                    localization.translate(LabelKey.requestPickup)!,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

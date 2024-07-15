@@ -1,16 +1,20 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/donate/donate_food.dart';
 import 'package:spoonshare/screens/donate/share_food.dart';
 import 'package:spoonshare/screens/donate/share_water.dart';
 import 'package:spoonshare/screens/home/home.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 
 class DonatePage extends StatelessWidget {
   const DonatePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -58,9 +62,9 @@ class DonatePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text(
-                    'Select one option',
-                    style: TextStyle(
+                   Text(
+                    localization.translate(LabelKey.donatePageOption)!,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontFamily: 'DM Sans',
@@ -69,7 +73,7 @@ class DonatePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   DonationButton(
-                    buttonText: 'DONATE FOOD',
+                    buttonText: localization.translate(LabelKey.donateFood)!,
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -82,25 +86,25 @@ class DonatePage extends StatelessWidget {
                   _buildOrText(),
                   const SizedBox(height: 10),
                   DonationButton(
-                    buttonText: 'SHARE FREE FOOD',
+                    buttonText: localization.translate(LabelKey.shareFreeFood)!,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const ShareFoodScreen()),
-                      );  
+                      );
                     },
                   ),
-                    _buildOrText(),
+                  _buildOrText(),
                   const SizedBox(height: 10),
                   DonationButton(
-                    buttonText: 'Share Water Stalls',
+                    buttonText: localization.translate(LabelKey.shareWater)!,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const ShareWaterScreen()),
-                      );  
+                      );
                     },
                   ),
                 ],

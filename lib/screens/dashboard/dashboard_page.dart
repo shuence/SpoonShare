@@ -1,13 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/ngo/ngo_form.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_form.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context);
     return Scaffold(
       body: Center(
         child: Container(
@@ -17,7 +19,8 @@ class DashboardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildTitle(
-                  'Join SpoonShare Family', 'join the zero hunger revolution'),
+                  localization!.translate(LabelKey.dashboardPageSlogan)!,
+                  localization.translate(LabelKey.dashboardPageSlogan2)!),
               const SizedBox(height: 32),
               _buildGradientBox(context),
               const SizedBox(height: 8),
@@ -60,6 +63,7 @@ class DashboardPage extends StatelessWidget {
   }
 
   Widget _buildGradientBox(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -92,27 +96,27 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             bottom: 16,
             left: 16,
             right: 16, // Adjust the right padding
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 14), // Horizontal padding
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 14), // Horizontal padding
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
                     .spaceBetween, // Align children to both ends
                 children: [
                   Text(
-                    'JOIN US AS Volunteer',
-                    style: TextStyle(
+                    localization.translate(LabelKey.joinVolunteer)!,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontFamily: 'Lora',
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
                     size: 24,
@@ -127,6 +131,8 @@ class DashboardPage extends StatelessWidget {
   }
 
   Widget _buildGradientBoxNGO(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -135,7 +141,6 @@ class DashboardPage extends StatelessWidget {
             builder: (context) => const NGOFormScreen(),
           ),
         );
-        print('Join us as NGO container tapped!');
       },
       child: Stack(
         children: [
@@ -160,27 +165,27 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             bottom: 16,
             left: 16,
             right: 16, // Adjust the right padding
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 14), // Horizontal padding
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 14), // Horizontal padding
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
                     .spaceBetween, // Align children to both ends
                 children: [
                   Text(
-                    'JOIN US AS NGO',
-                    style: TextStyle(
+                    localization.translate(LabelKey.joinNgo)!,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontFamily: 'Lora',
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
                     size: 24,
@@ -231,4 +236,3 @@ class DashboardPage extends StatelessWidget {
     );
   }
 }
-

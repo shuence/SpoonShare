@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spoonshare/constants/app_constants.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
@@ -54,7 +56,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
         listForPlaces = suggestions;
       });
     } catch (e) {
-      print("Error: $e");
+      throw Exception(e);
     }
   }
 
@@ -85,9 +87,6 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
     double selectedLat = placeDetails['geometry']['location']['lat'];
     double selectedLng = placeDetails['geometry']['location']['lng'];
     String selectedAddress = listForPlaces[index]['description'];
-    print(selectedAddress);
-    print(selectedLat);
-    print(selectedLng);
 
     setState(() {
       _addressController.text = selectedAddress;
@@ -102,6 +101,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
   Widget build(BuildContext context) {
     bool showExpandedList =
         _addressController.text.isNotEmpty && !_addressSelected;
+    var localization = AppLocalization.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -112,12 +112,13 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Pickup Location*',
+          label: localization!.translate(LabelKey.pickupLocation)!,
           controller: _pickuplocationController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-            label: "Pickup Address*", controller: _addressController),
+            label: localization.translate(LabelKey.pickupAddress)!,
+            controller: _addressController),
         if (showExpandedList)
           Container(
             height: 200,
@@ -150,17 +151,17 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
           ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Life*',
+          label: localization.translate(LabelKey.foodLifeRecycle)!,
           controller: _foodlifeController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Description*',
+          label: localization.translate(LabelKey.foodDescription)!,
           controller: _fooddescriptionController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: 'Food Quantity*',
+          label: localization.translate(LabelKey.foodQuantity)!,
           controller: _foodquantityController,
         ),
         const SizedBox(height: 16),
@@ -174,6 +175,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
   }
 
   Widget _buildDateAndTimeInputs(BuildContext context) {
+    var localization = AppLocalization.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -195,7 +197,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Pickup Date*',
+                    hintText: localization!.translate(LabelKey.pickupDate)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -228,7 +230,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Pickup Time Till*',
+                    hintText: localization.translate(LabelKey.pickupTimeTill)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -282,6 +284,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
   }
 
   Widget _buildImageUploadBox() {
+    var localization = AppLocalization.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -318,11 +321,11 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
             ),
           ),
           const SizedBox(height: 8),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              '* Fill below details to share food',
-              style: TextStyle(
+              localization!.translate(LabelKey.requiredFileds)!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
               ),
@@ -358,15 +361,15 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
     });
 
     if (allAccepted) {
-      // Show options for gallery or camera
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
+          var localization = AppLocalization.of(context)!;
           return Wrap(
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text('Pick from Gallery'),
+                title: Text(localization.translate(LabelKey.pickGallery)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.gallery);
@@ -374,7 +377,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Capture with Camera'),
+                title: Text(localization.translate(LabelKey.captureCamera)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.camera);
@@ -384,9 +387,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
           );
         },
       );
-    } else {
-      print('Storage or camera permission denied');
-    }
+    } else {}
   }
 
   Future<void> _pickImage(ImageSource source) async {
@@ -404,7 +405,7 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
   Widget _buildSubmitButton() {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
+    var localization = AppLocalization.of(context);
     return Container(
       width: screenWidth * 0.8667,
       height: screenHeight * 0.05625,
@@ -417,10 +418,10 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
         onTap: () {
           submitFood();
         },
-        child: const Center(
+        child:  Center(
           child: Text(
-            'Submit',
-            style: TextStyle(
+            localization!.translate(LabelKey.submitButton)!,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: 'Roboto',
@@ -496,7 +497,6 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const ThankYouScreen()));
     } catch (e) {
-      print('Error submitting food: $e');
       showErrorSnackbar(context, 'Error submitting food');
     } finally {
       _pickuplocationController.clear();
@@ -581,7 +581,6 @@ class _RecycleFoodScreenContentState extends State<RecycleFoodScreenContent> {
 
       return downloadURL;
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       throw Exception('Error uploading image to Firebase Storage');
     }
   }

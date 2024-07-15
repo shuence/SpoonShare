@@ -1,5 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -7,8 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
@@ -17,6 +18,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:uuid/uuid.dart';
 
 class ShareWaterScreenContent extends StatefulWidget {
+  const ShareWaterScreenContent({super.key});
+
   @override
   _ShareWaterScreenContentState createState() =>
       _ShareWaterScreenContentState();
@@ -43,7 +46,7 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
         listForPlaces = suggestions;
       });
     } catch (e) {
-      print("Error: $e");
+      throw Exception(e);
     }
   }
 
@@ -87,92 +90,61 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
   Widget build(BuildContext context) {
     bool showExpandedList =
         _addressController.text.isNotEmpty && !_addressSelected;
+    var localization = AppLocalization.of(context);
 
     return SingleChildScrollView(
       child: SizedBox(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              _buildImageUploadBox(),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Venue*',
-                controller: _venueController,
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Enter Address*',
-                controller: _addressController,
-              ),
-              if (showExpandedList)
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: ListView.builder(
-                    itemCount: listForPlaces.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        onTap: () async {
-                          _addressSelected = true;
-                          await handleListItemTap(index);
-                        },
-                        title: Text(
-                          listForPlaces[index]['description'],
-                        ),
-                      );
-                    },
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            _buildImageUploadBox(),
+            const SizedBox(height: 16),
+            CustomTextField(
+              label: localization!.translate(LabelKey.venueShareFoodForm)!,
+              controller: _venueController,
+            ),
+            const SizedBox(height: 16),
+            CustomTextField(
+              label: localization.translate(LabelKey.enterAddress)!,
+              controller: _addressController,
+            ),
+            if (showExpandedList)
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
-              const SizedBox(height: 16),
-              _buildSubmitButton(),
-            ],
-          ),
+                child: ListView.builder(
+                  itemCount: listForPlaces.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      onTap: () async {
+                        _addressSelected = true;
+                        await handleListItemTap(index);
+                      },
+                      title: Text(
+                        listForPlaces[index]['description'],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            const SizedBox(height: 16),
+            _buildSubmitButton(),
+          ],
         ),
       ),
     );
-  }
-
-  Future<DateTime?> _selectDate(
-      BuildContext context, TextEditingController controller) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 365)),
-    );
-
-    if (picked != null) {
-      controller.text = picked.toLocal().toString().split(' ')[0];
-    }
-
-    return picked;
-  }
-
-  Future<TimeOfDay?> _selectTime(
-      BuildContext context, TextEditingController controller) async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-
-    if (picked != null) {
-      controller.text = picked.format(context);
-    }
-
-    return picked;
   }
 
   Widget _buildImageUploadBox() {
@@ -215,7 +187,7 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              '* Fill below details to share food',
+              '* Fill below details to share water',
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
@@ -256,11 +228,13 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
+          var localization = AppLocalization.of(context)!;
+
           return Wrap(
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text('Pick from Gallery'),
+                title: Text(localization.translate(LabelKey.pickGallery)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.gallery);
@@ -268,7 +242,7 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Capture with Camera'),
+                title: Text(localization.translate(LabelKey.captureCamera)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.camera);
@@ -278,9 +252,7 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
           );
         },
       );
-    } else {
-      print('Storage or camera permission denied');
-    }
+    } else {}
   }
 
   Future<void> _pickImage(ImageSource source) async {
@@ -295,13 +267,15 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
     }
   }
 
-  Widget _buildSubmitButton() {
+   Widget _buildSubmitButton() {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    var localization = AppLocalization.of(context)!;
 
     return Container(
       width: screenWidth * 0.8667,
       height: screenHeight * 0.05625,
+      margin: const EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
         color: const Color(0xFFFF9F1C),
         borderRadius: BorderRadius.circular(50),
@@ -310,10 +284,10 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
         onTap: () {
           submitFood();
         },
-        child: const Center(
+        child: Center(
           child: Text(
-            'Submit',
-            style: TextStyle(
+            localization.translate(LabelKey.submitButton)!,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: 'Roboto',
@@ -373,7 +347,6 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const ThankYouScreen()));
     } catch (e) {
-      print('Error submitting food: $e');
       showErrorSnackbar(context, 'Error submitting food');
     } finally {
       // Clear text controllers and reset selected food type
@@ -402,7 +375,6 @@ class _ShareWaterScreenContentState extends State<ShareWaterScreenContent> {
 
       return downloadURL;
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       throw Exception('Error uploading image to Firebase Storage');
     }
   }
@@ -413,9 +385,10 @@ class ShareWaterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Share Free Water'),
+        title: Text(localization.translate(LabelKey.shareWaterForm)!),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,
@@ -432,11 +405,11 @@ class ShareWaterScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.only(right: 20, left: 20, bottom: 10),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ShareWaterScreenContent(),
             ],
           ),

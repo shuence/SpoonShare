@@ -7,8 +7,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/donate/thank_you.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/auto_complete.dart';
 import 'package:spoonshare/widgets/custom_text_field.dart';
 import 'package:spoonshare/widgets/loader.dart';
@@ -17,6 +19,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:uuid/uuid.dart';
 
 class ShareFoodScreenContent extends StatefulWidget {
+  const ShareFoodScreenContent({super.key});
+
   @override
   _ShareFoodScreenContentState createState() => _ShareFoodScreenContentState();
 }
@@ -49,7 +53,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
         listForPlaces = suggestions;
       });
     } catch (e) {
-      print("Error: $e");
+      throw Exception(e);
     }
   }
 
@@ -80,9 +84,6 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
     double selectedLat = placeDetails['geometry']['location']['lat'];
     double selectedLng = placeDetails['geometry']['location']['lng'];
     String selectedAddress = listForPlaces[index]['description'];
-    print(selectedAddress);
-    print(selectedLat);
-    print(selectedLng);
 
     setState(() {
       _addressController.text = selectedAddress;
@@ -93,78 +94,79 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
     });
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     bool showExpandedList =
         _addressController.text.isNotEmpty && !_addressSelected;
+    var localization = AppLocalization.of(context)!;
 
     return SingleChildScrollView(
       child: SizedBox(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              _buildImageUploadBox(),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Venue*',
-                controller: _venueController,
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Enter Address*',
-                controller: _addressController,
-              ),
-              if (showExpandedList)
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: ListView.builder(
-                    itemCount: listForPlaces.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        onTap: () async {
-                          _addressSelected = true;
-                          await handleListItemTap(index);
-                        },
-                        title: Text(
-                          listForPlaces[index]['description'],
-                        ),
-                      );
-                    },
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            _buildImageUploadBox(),
+            const SizedBox(height: 16),
+            CustomTextField(
+              label: localization.translate(LabelKey.venueShareFoodForm)!,
+              controller: _venueController,
+            ),
+            const SizedBox(height: 16),
+            CustomTextField(
+              label: localization.translate(LabelKey.enterAddress)!,
+              controller: _addressController,
+            ),
+            if (showExpandedList)
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'For whom it is? (Community)*',
-                controller: _communityController,
+                child: ListView.builder(
+                  itemCount: listForPlaces.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      onTap: () async {
+                        _addressSelected = true;
+                        await handleListItemTap(index);
+                      },
+                      title: Text(
+                        listForPlaces[index]['description'],
+                      ),
+                    );
+                  },
+                ),
               ),
-              const SizedBox(height: 16),
-              _buildDateAndTimeInputs(context),
-              const SizedBox(height: 16),
-              _buildDropdownInput(),
-              const SizedBox(height: 16),
-              _buildDailyActivityCheckbox(),
-              _buildSubmitButton(),
-            ],
-          ),
+            const SizedBox(height: 16),
+            CustomTextField(
+              label: localization.translate(LabelKey.forwhom)!,
+              controller: _communityController,
+            ),
+            const SizedBox(height: 16),
+            _buildDateAndTimeInputs(context),
+            const SizedBox(height: 16),
+            _buildDropdownInput(),
+            const SizedBox(height: 16),
+            _buildDailyActivityCheckbox(),
+            _buildSubmitButton(),
+          ],
         ),
       ),
     );
   }
+
   Widget _buildDailyActivityCheckbox() {
+    var localization = AppLocalization.of(context);
     return Row(
       children: [
         Checkbox(
@@ -175,12 +177,13 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
             });
           },
         ),
-        const Text('Daily Active'),
+        Text(localization!.translate(LabelKey.forwhom)!),
       ],
     );
   }
 
   Widget _buildDateAndTimeInputs(BuildContext context) {
+    var localization = AppLocalization.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -202,7 +205,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Select Date*',
+                    hintText: localization?.translate(LabelKey.selectDate)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -235,7 +238,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Select Time*',
+                    hintText: localization!.translate(LabelKey.selectTime)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -273,7 +276,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Select Date*',
+                    hintText: localization.translate(LabelKey.selectDate)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -306,7 +309,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Select Time*',
+                    hintText: localization.translate(LabelKey.selectTime)!,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: const BorderSide(
@@ -360,6 +363,8 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
   }
 
   Widget _buildImageUploadBox() {
+    var localization = AppLocalization.of(context)!;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -396,11 +401,11 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
             ),
           ),
           const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              '* Fill below details to share food',
-              style: TextStyle(
+              localization.translate(LabelKey.details)!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
               ),
@@ -436,15 +441,15 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
     });
 
     if (allAccepted) {
-      // Show options for gallery or camera
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
+          var localization = AppLocalization.of(context)!;
           return Wrap(
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text('Pick from Gallery'),
+                title: Text(localization.translate(LabelKey.pickGallery)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.gallery);
@@ -452,7 +457,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Capture with Camera'),
+                title: Text(localization.translate(LabelKey.captureCamera)!),
                 onTap: () async {
                   Navigator.of(context).pop();
                   await _pickImage(ImageSource.camera);
@@ -462,9 +467,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
           );
         },
       );
-    } else {
-      print('Storage or camera permission denied');
-    }
+    } else {}
   }
 
   Future<void> _pickImage(ImageSource source) async {
@@ -482,7 +485,7 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
   Widget _buildSubmitButton() {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
+    var localization = AppLocalization.of(context)!;
     return Container(
       width: screenWidth * 0.8667,
       height: screenHeight * 0.05625,
@@ -494,10 +497,10 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
         onTap: () {
           submitFood();
         },
-        child: const Center(
+        child: Center(
           child: Text(
-            'Submit',
-            style: TextStyle(
+            localization.translate(LabelKey.submitButton)!,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: 'Roboto',
@@ -544,9 +547,8 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
       // Determine the daily active status
       bool dailyActive = _isActive;
 
-    // Create a GeoPoint with the latitude and longitude
+      // Create a GeoPoint with the latitude and longitude
       GeoPoint location = GeoPoint(lat, lng);
-
 
       // Create a map with food details, including a timestamp
       Map<String, dynamic> foodData = {
@@ -579,7 +581,6 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const ThankYouScreen()));
     } catch (e) {
-      print('Error submitting food: $e');
       showErrorSnackbar(context, 'Error submitting food');
     } finally {
       // Clear text controllers and reset selected food type
@@ -600,14 +601,16 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
   }
 
   Widget _buildDropdownInput() {
-    return Container(
+    var localization = AppLocalization.of(context)!;
+
+    return SizedBox(
       width: double.infinity,
       height: 46,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: DropdownButtonFormField<String>(
           value: _selectedFoodType.isNotEmpty ? _selectedFoodType : null,
-          hint: const Text('Food Type'),
+          hint: Text(localization.translate(LabelKey.foodType1)!),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16.0,
@@ -615,13 +618,13 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Color(0xFFFF9F1C),
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Color(0xFFFF9F1C),
               ),
             ),
@@ -631,18 +634,18 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
               _selectedFoodType = value!;
             });
           },
-          items: const [
+          items: [
             DropdownMenuItem<String>(
               value: 'veg',
-              child: Text('Veg'),
+              child: Text(localization.translate(LabelKey.foodVeg)!),
             ),
             DropdownMenuItem<String>(
               value: 'nonveg',
-              child: Text('Non-Veg'),
+              child: Text(localization.translate(LabelKey.foodNonVeg)!),
             ),
             DropdownMenuItem<String>(
               value: 'both',
-              child: Text('Both'),
+              child: Text(localization.translate(LabelKey.foodBoth)!),
             ),
           ],
         ),
@@ -668,11 +671,9 @@ class _ShareFoodScreenContentState extends State<ShareFoodScreenContent> {
 
       return downloadURL;
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       throw Exception('Error uploading image to Firebase Storage');
     }
   }
-
 }
 
 class ShareFoodScreen extends StatelessWidget {
@@ -680,9 +681,10 @@ class ShareFoodScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Share Free Food'),
+        title: Text(localization.translate(LabelKey.shareFreeFoodForm)!),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,
@@ -699,17 +701,16 @@ class ShareFoodScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.only(right: 20, left: 20, bottom: 10),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ShareFoodScreenContent(),
             ],
           ),
         ),
       ),
-      
     );
   }
 }

@@ -5,11 +5,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/models/users/user.dart';
 import 'package:spoonshare/screens/profile/settings_page.dart';
 import 'package:spoonshare/screens/volunteer/volunteer_form.dart';
 import 'package:spoonshare/services/auth.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 import 'package:spoonshare/widgets/loader.dart';
 import 'package:spoonshare/widgets/snackbar.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -79,6 +81,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalization.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         padding: MediaQuery.of(context).padding,
@@ -249,9 +252,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               children: [
                                 const Icon(Icons.info_outline),
                                 const SizedBox(width: 8),
-                                const Text(
-                                  'Personal Information',
-                                  style: TextStyle(
+                                 Text(
+                                  localization!.translate(LabelKey.profileInformation)!,
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -327,7 +330,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,
                                 ),
-                                child: const Text('Submit'),
+                                child: Text(
+                                  localization.translate(LabelKey.submitButton)!,
+                                )
                               ),
                           ],
                         ),
@@ -348,13 +353,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                             Row(
                               children: [
-                                Icon(Icons.info_outline),
-                                SizedBox(width: 8),
+                                const Icon(Icons.info_outline),
+                                const SizedBox(width: 8),
                                 Text(
-                                  'Organisation Information',
-                                  style: TextStyle(
+                                  localization.translate(LabelKey.organisationInformation)!,
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 14,
                                     fontFamily: 'Roboto',
@@ -402,13 +407,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             ),
                             const SizedBox(height: 16),
                             buildEditableField(
-                              'Organisation',
+                              localization.translate(LabelKey.organisation)!,
                               orgController,
                               TextInputType.text,
                             ),
                             const SizedBox(height: 16),
                             buildEditableField(
-                              'Role',
+                              localization.translate(LabelKey.role)!,
                               roleController,
                               TextInputType.text,
                             ),
@@ -424,7 +429,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,
                                 ),
-                                child: const Text('Submit'),
+                                child:  Text(localization.translate(LabelKey.submitButton)!),
                               ),
                             if (widget.role == 'Individual')
                               ElevatedButton(
@@ -441,7 +446,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,
                                 ),
-                                child: const Text('Become A Volunteer'),
+                                child:  Text(localization.translate(LabelKey.becomeVolunteer)!),
                               ),
                           ],
                         ),
@@ -551,7 +556,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       }
     } else {
       showErrorSnackbar(context, 'Storage permission denied');
-      print('Storage permission denied');
     }
   }
 
@@ -569,7 +573,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       String imageUrl = await storageReference.getDownloadURL();
       return imageUrl;
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       return '';
     } finally {
       Navigator.pop(context);
@@ -604,11 +607,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
       showSuccessSnackbar(context, "Profile image updated successfully!");
 
-      print("Profile image updated successfully!");
     } catch (e) {
       // Handle the exception
       showErrorSnackbar(context, "Error updating profile image: $e");
-      print("Error updating profile image: $e");
     } finally {
       Navigator.pop(context);
     }
@@ -644,9 +645,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         'contactNumber': contactController.text,
       });
 
-      print("Updated successfully!");
     } catch (e) {
-      print("Error updating user profile: $e");
+      // Handle the exception
+      showErrorSnackbar(context, "Error updating profile: $e");
     } finally {
       Navigator.pop(context); // Dismiss loader
     }

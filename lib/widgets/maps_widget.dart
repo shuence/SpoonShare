@@ -7,12 +7,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart' as location;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:spoonshare/screens/admin/all_ngos.dart';
+import 'package:spoonshare/l10n/app_localization.dart';
 import 'package:spoonshare/screens/fooddetails/food_details.dart';
 import 'package:spoonshare/screens/fooddetails/water_details.dart';
+import 'package:spoonshare/utils/label_keys.dart';
 
 class MapsWidget extends StatefulWidget {
+  const MapsWidget({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MapsWidgetState createState() => _MapsWidgetState();
 }
 
@@ -36,9 +40,7 @@ class _MapsWidgetState extends State<MapsWidget> {
     if (status == PermissionStatus.granted) {
       _getCurrentLocation();
     } else if (status == PermissionStatus.denied) {
-      print("Location permission denied");
     } else if (status == PermissionStatus.permanentlyDenied) {
-      print("Location permission permanently denied");
       openAppSettings();
     }
   }
@@ -60,14 +62,6 @@ class _MapsWidgetState extends State<MapsWidget> {
     );
   }
 
-  void _navigateToNgoDetails(BuildContext context, QueryDocumentSnapshot data) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ngoDetailsPage(ngoDoc: data),
-      ),
-    );
-  }
 
   void _navigateTowaterDetails(BuildContext context, QueryDocumentSnapshot data) {
     Navigator.push(
@@ -244,9 +238,11 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+        var localization = AppLocalization.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Map View Shared Food'),
+        title: Text(localization.translate(LabelKey.mapAppBarTitle)!),
         backgroundColor: const Color(0xFFFF9F1C),
         titleTextStyle: const TextStyle(
             color: Colors.white,

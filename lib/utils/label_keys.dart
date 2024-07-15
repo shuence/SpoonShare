@@ -82,6 +82,7 @@ class LabelKey {
   static const String errorSubmitting = 'errorSubmitting';
   static const String shareWaterForm = 'shareWaterForm';
   static const String dashboardPageSlogan = 'dashboardPageSlogan';
+  static const String dashboardPageSlogan2 = 'dashboardPageSlogan2';
   static const String joinVolunteer = 'joinVolunteer';
   static const String joinNgo = 'joinNgo';
   static const String volunteerForm = 'volunteerForm';
