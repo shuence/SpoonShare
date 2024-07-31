@@ -1,4 +1,4 @@
-# SpoonShare 🥣
+# WiseVision 👨‍🦯
 
 ## 💡 Introduction
 
